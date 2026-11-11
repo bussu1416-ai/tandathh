@@ -1,1716 +1,1302 @@
-<html lang="vi" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TANDAT ENGLISH - Khóa Học Tiếng Anh Cho Người Mới Bắt Đầu</title>
-    <meta name="description" content="TANDAT ENGLISH - khóa học tiếng Anh cho người mới bắt đầu, lộ trình rõ ràng, học thử flashcard miễn phí. Đăng ký tư vấn ngay.">
-    <meta name="keywords" content="học tiếng Anh, tiếng Anh cho người mới bắt đầu, khóa học tiếng Anh, TANDAT ENGLISH, Cao Lãnh, Đồng Tháp">
-    <meta name="robots" content="index, follow">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="TANDAT ENGLISH - Khóa Học Tiếng Anh Cho Người Mới Bắt Đầu">
-    <meta property="og:description" content="Khóa học tiếng Anh cho người mới bắt đầu, học thử flashcard miễn phí.">
-    <meta property="og:locale" content="vi_VN">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Plus Jakarta Sans & Inter (Hỗ trợ tiếng Việt sắc nét) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome 6 Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Đạo Cụ Quay Phim: Cùng Một Tin Nhắn, Hai Kết Cục</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Cấu hình Tailwind tùy chỉnh màu sắc và font chữ -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        },
-                        accent: {
-                            50: '#fff7ed',
-                            100: '#ffedd5',
-                            500: '#f97316',
-                            600: '#ea580c',
-                            700: '#c2410c',
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(30, 58, 138, 0.12)',
-                        'glow': '0 10px 30px -5px rgba(249, 115, 22, 0.45)',
-                    }
-                }
-            }
-        }
-    </script>
+  <style>
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
 
-    <style>
-        /* Hiệu ứng Flip Card 3D cho phần Học thử Flashcard */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-        .transform-style-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .backface-hidden {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-        .flipped {
-            transform: rotateY(180deg);
-        }
+    input {
+      user-select: text;
+    }
 
-        /* Hiệu ứng sóng âm khi phát âm thanh */
-        @keyframes soundWave {
-            0%, 100% { height: 6px; }
-            50% { height: 20px; }
-        }
-        .wave-bar {
-            animation: soundWave 0.8s ease-in-out infinite;
-        }
-        .wave-bar:nth-child(2) { animation-delay: 0.15s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.3s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+    /* Keyframe rung màn hình khi có thông báo */
+    @keyframes phoneShake {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      15% { transform: translate(-6px, -3px) rotate(-1deg); }
+      30% { transform: translate(6px, 2px) rotate(1deg); }
+      45% { transform: translate(-6px, 3px) rotate(-1deg); }
+      60% { transform: translate(6px, -2px) rotate(1deg); }
+      75% { transform: translate(-4px, 2px) rotate(-0.5deg); }
+      90% { transform: translate(4px, -1px) rotate(0.5deg); }
+    }
 
-        /* Tùy chỉnh thanh cuộn */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-        }
-    </style>
+    .animate-shake {
+      animation: phoneShake 0.55s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    /* Rung mạnh cho cảnh trừ 5 triệu */
+    @keyframes heavyAlertShake {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      10%, 30%, 50%, 70%, 90% { transform: translate(-8px, 2px) scale(1.01); }
+      20%, 40%, 60%, 80% { transform: translate(8px, -2px) scale(1.01); }
+    }
+
+    .animate-heavy-shake {
+      animation: heavyAlertShake 0.75s ease-in-out both;
+    }
+
+    /* Hiệu ứng trượt thông báo từ trên xuống */
+    @keyframes slideDownBanner {
+      0% { transform: translateY(-130%) scale(0.95); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .banner-enter {
+      animation: slideDownBanner 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Hiệu ứng xuất hiện tin nhắn */
+    @keyframes popMessage {
+      0% { transform: translateY(24px) scale(0.94); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .msg-enter {
+      animation: popMessage 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Nhấp nháy khẩn cấp */
+    @keyframes urgentPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(0.98); }
+    }
+
+    .urgent-pulse {
+      animation: urgentPulse 1s infinite ease-in-out;
+    }
+
+    /* Tùy chỉnh thanh cuộn ẩn gọn */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-accent-500 selection:text-white">
+<body class="bg-slate-950 text-slate-900 min-h-screen flex items-center justify-center sm:p-4 overflow-hidden">
 
-    <!-- Thanh thông báo ưu đãi đầu trang (Top Bar) -->
-    <div class="bg-brand-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center relative z-50">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-            <span class="inline-flex items-center gap-1.5 bg-accent-500 text-white font-bold px-2.5 py-0.5 rounded-full text-xs uppercase tracking-wider">
-                <i class="fa-solid fa-bolt"></i> TANDAT ENGLISH Khai giảng
-            </span>
-            <p class="font-medium">
-                Tặng học bổng <strong class="text-amber-300 underline">40% học phí</strong> & Bộ Flashcard 1.000 từ thông dụng cho 20 học viên đăng ký sớm nhất!
-            </p>
+  <!-- KHUNG ĐIỆN THOẠI CHUẨN 9:16 (Full-screen trên điện thoại thật, có viền máy trên Desktop) -->
+  <div id="phoneFrame" class="relative w-full h-[100dvh] sm:w-[412px] sm:h-[860px] sm:max-h-[95vh] sm:aspect-[9/16] bg-white sm:rounded-[44px] sm:shadow-[0_0_60px_rgba(0,0,0,0.85)] sm:border-[10px] sm:border-slate-800 flex flex-col overflow-hidden transition-colors duration-300">
+
+    <!-- Tai thỏ / Dynamic Island giả lập (chỉ hiện nhẹ nhàng để giống thật) -->
+    <div class="hidden sm:block absolute top-2 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-50 pointer-events-none"></div>
+
+    <!-- THANH TRẠNG THÁI ĐIỆN THOẠI (STATUS BAR) -->
+    <!-- Mẹo: Nhấp đúp vào thanh trạng thái cũng có thể ẩn/hiện thanh đạo cụ -->
+    <header id="statusBar" ondblclick="togglePropBar()" title="Nhấp đúp để Ẩn/Hiện thanh đạo cụ" class="w-full px-5 pt-2.5 pb-2 flex items-center justify-between text-xs font-bold z-40 select-none transition-colors duration-300 bg-white text-slate-900">
+      <div class="flex items-center gap-1.5">
+        <span id="statusClock" class="text-sm font-extrabold tracking-tight">09:41</span>
+        <span id="timerDelayBadge" class="hidden px-1.5 py-0.5 text-[10px] bg-amber-500 text-white rounded-full animate-pulse">3s...</span>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <i class="fa-solid fa-signal"></i>
+        <span class="font-extrabold text-[11px]">5G</span>
+        <i class="fa-solid fa-wifi"></i>
+        <div class="flex items-center gap-0.5">
+          <span class="text-[11px] font-bold">92%</span>
+          <i class="fa-solid fa-battery-full text-sm"></i>
         </div>
-    </div>
-
-    <!-- 1. STICKY NAVIGATION BAR -->
-    <header id="navbar" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo TANDAT ENGLISH -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-800 to-accent-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-                        <i class="fa-solid fa-graduation-cap text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="font-heading font-extrabold text-xl tracking-tight text-brand-900 block leading-none">
-                            TANDAT <span class="text-accent-600">ENGLISH</span>
-                        </span>
-                        <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase block mt-0.5">
-                            Tiếng Anh Cho Người Mới Bắt Đầu
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Desktop Menu Links -->
-                <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
-                    <a href="#loi-ich" class="hover:text-brand-700 transition-colors py-2">Lợi ích</a>
-                    <a href="#hoc-thu" class="hover:text-brand-700 transition-colors py-2 flex items-center gap-1.5">
-                        <span>Học thử</span>
-                        <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Tương tác</span>
-                    </a>
-                    <a href="#lo-trinh" class="hover:text-brand-700 transition-colors py-2">Lộ trình 90 ngày</a>
-                    <a href="#hoc-phi" class="hover:text-brand-700 transition-colors py-2">Học phí</a>
-                    <a href="#cam-nhan" class="hover:text-brand-700 transition-colors py-2">Học viên</a>
-                    <a href="#dang-ky" class="hover:text-brand-700 transition-colors py-2">Đăng ký ngay</a>
-                </nav>
-
-                <!-- CTA Button Desktop -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <a href="#dang-ky" class="bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold text-sm px-5 py-3 rounded-xl shadow-glow hover:-translate-y-0.5 transition-all flex items-center gap-2">
-                        <span>Đăng ký ngay</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Mobile Hamburger Button -->
-                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Mở menu" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
-                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
-            <a href="#loi-ich" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700">Lợi ích & Phương pháp</a>
-            <a href="#hoc-thu" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700">Học thử & Test trình độ</a>
-            <a href="#lo-trinh" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700">Lộ trình 90 ngày</a>
-            <a href="#hoc-phi" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700">Bảng học phí</a>
-            <a href="#cam-nhan" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700">Cảm nhận học viên</a>
-            <div class="pt-2">
-                <a href="#dang-ky" onclick="toggleMobileMenu()" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold text-center py-3.5 rounded-xl shadow-glow block">
-                    Đăng ký ngay (Ưu đãi 40%)
-                </a>
-            </div>
-        </div>
+      </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-brand-900 via-brand-800 to-brand-900 text-white py-14 sm:py-20 lg:py-24">
-        <!-- Họa tiết trang trí nền -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-accent-500 blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-[32rem] h-[32rem] rounded-full bg-blue-400 blur-3xl"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Cột trái: Nội dung chính -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-amber-300">
-                        <i class="fa-solid fa-star"></i>
-                        <span>Phương pháp độc quyền tại TANDAT ENGLISH cho người mất gốc</span>
-                    </div>
-
-                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-[50px] leading-[1.18] tracking-tight">
-                        TANDAT ENGLISH - Xóa Mất Gốc, <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-accent-500">Bật Phản Xạ</span> Sau 90 Ngày
-                    </h1>
-
-                    <p class="text-slate-200 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Tạm biệt nỗi sợ tiếng Anh và cách học vẹt ngữ pháp khô khan! Làm chủ <strong>44 âm chuẩn IPA</strong>, nạp <strong>1.000 từ vựng thực chiến</strong> và phản xạ tự nhiên trong 12 tuần cùng giảng viên kèm sát 1-1 mỗi ngày.
-                    </p>
-
-                    <!-- Dual CTAs -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#dang-ky" class="w-full sm:w-auto bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold text-base px-8 py-4 rounded-2xl shadow-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
-                            <span>Đăng ký học thử miễn phí</span>
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </a>
-                        <a href="#hoc-thu" onclick="switchDemoTab('quiz')" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/25 font-heading font-bold text-base px-7 py-4 rounded-2xl transition-all flex items-center justify-center gap-2.5">
-                            <i class="fa-solid fa-play-circle text-amber-300 text-lg"></i>
-                            <span>Test trình độ nhanh</span>
-                        </a>
-                    </div>
-
-                    <!-- Trust Badges / Stats -->
-                    <div class="pt-6 border-t border-white/15 grid grid-cols-3 gap-4 text-left">
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 shrink-0 mt-0.5">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                            <div>
-                                <div class="font-heading font-extrabold text-lg sm:text-2xl text-white">5,000+</div>
-                                <div class="text-xs text-slate-300">Học viên xóa mất gốc</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-emerald-300 shrink-0 mt-0.5">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-                            <div>
-                                <div class="font-heading font-extrabold text-lg sm:text-2xl text-white">Kèm 1-1</div>
-                                <div class="text-xs text-slate-300">Sửa phát âm mỗi ngày</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-orange-300 shrink-0 mt-0.5">
-                                <i class="fa-solid fa-file-shield"></i>
-                            </div>
-                            <div>
-                                <div class="font-heading font-extrabold text-lg sm:text-2xl text-white">Cam kết</div>
-                                <div class="text-xs text-slate-300">Đầu ra bằng văn bản</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cột phải: Thẻ Mô Phỏng Học Tập Tương Tác -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-100 relative">
-                        <!-- Nhãn nổi -->
-                        <div class="absolute -top-4 right-6 bg-emerald-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
-                            Trải nghiệm phát âm cùng TANDAT ENGLISH
-                        </div>
-
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-2xl bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-lg">
-                                    <i class="fa-solid fa-volume-high"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Bài học mẫu tại TANDAT ENGLISH</span>
-                                    <h3 class="font-heading font-bold text-slate-900 text-base">Chuẩn hóa âm /θ/ & Phản xạ câu</h3>
-                                </div>
-                            </div>
-                            <span class="bg-brand-50 text-brand-700 font-bold text-xs px-2.5 py-1 rounded-lg">Ngày 01/90</span>
-                        </div>
-
-                        <!-- Hộp từ vựng mẫu có nút nghe thật -->
-                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/70 mb-5">
-                            <div class="flex items-center justify-between mb-2">
-                                <div>
-                                    <span class="text-xs font-bold text-accent-600 uppercase">Từ dễ phát âm sai #1</span>
-                                    <div class="flex items-baseline gap-2.5 mt-1">
-                                        <h4 class="font-heading font-extrabold text-2xl text-brand-900">Comfortable</h4>
-                                        <span class="font-mono text-sm text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">/ˈkʌm.fə.tə.bəl/</span>
-                                    </div>
-                                </div>
-                                <button onclick="speakSampleText('Comfortable. I feel very comfortable speaking English today.')" class="w-12 h-12 rounded-2xl bg-brand-700 hover:bg-brand-800 text-white flex items-center justify-center shadow-md hover:scale-105 transition-all" title="Bấm để nghe phát âm chuẩn">
-                                    <i class="fa-solid fa-volume-up text-lg"></i>
-                                </button>
-                            </div>
-                            <p class="text-xs text-slate-600 mb-3">
-                                <i class="fa-solid fa-circle-info text-brand-600 mr-1"></i>
-                                <strong>Mẹo nhớ TANDAT ENGLISH:</strong> Chỉ đọc 3 âm tiết <em>"KUM-fơ-bồ"</em> (âm "table" ở cuối bị lược nhẹ, không đọc là "com-fo-tây-bồ").
-                            </p>
-                            <div class="bg-white rounded-xl p-3 border border-slate-200/80 text-sm">
-                                <p class="font-semibold text-slate-800">"I feel very <span class="text-accent-600 underline">comfortable</span> speaking English today."</p>
-                                <p class="text-xs text-slate-500 mt-0.5">→ Hôm nay tôi cảm thấy rất thoải mái khi nói tiếng Anh.</p>
-                            </div>
-                        </div>
-
-                        <!-- Tiến độ mẫu 3 bước trong ngày -->
-                        <div class="space-y-2.5 mb-5">
-                            <div class="flex items-center justify-between text-xs font-semibold text-slate-600">
-                                <span>Lộ trình 30 phút mỗi tối cho người bận rộn:</span>
-                                <span class="text-emerald-600">Dễ áp dụng 100%</span>
-                            </div>
-                            <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                                <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-2.5 rounded-xl font-medium">
-                                    <i class="fa-solid fa-circle-check text-emerald-600 block mb-1 text-sm"></i>
-                                    10p Phát âm IPA
-                                </div>
-                                <div class="bg-brand-50 border border-brand-200 text-brand-800 p-2.5 rounded-xl font-medium">
-                                    <i class="fa-solid fa-bolt text-brand-600 block mb-1 text-sm"></i>
-                                    10p Từ thực chiến
-                                </div>
-                                <div class="bg-orange-50 border border-orange-200 text-accent-700 p-2.5 rounded-xl font-medium">
-                                    <i class="fa-solid fa-headset text-accent-600 block mb-1 text-sm"></i>
-                                    10p Phản xạ 1-1
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between bg-brand-900 text-white p-3.5 rounded-2xl text-xs">
-                            <div class="flex items-center gap-2.5">
-                                <div class="flex -space-x-2">
-                                    <span class="w-7 h-7 rounded-full bg-amber-400 text-brand-900 font-bold flex items-center justify-center border-2 border-brand-900">T</span>
-                                    <span class="w-7 h-7 rounded-full bg-emerald-400 text-brand-900 font-bold flex items-center justify-center border-2 border-brand-900">Đ</span>
-                                    <span class="w-7 h-7 rounded-full bg-sky-400 text-brand-900 font-bold flex items-center justify-center border-2 border-brand-900">E</span>
-                                </div>
-                                <span><strong>Học viên TANDAT ENGLISH</strong> đang thực hành</span>
-                            </div>
-                            <a href="#hoc-thu" class="text-amber-300 font-bold hover:underline">Thử thêm →</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. PAIN POINTS & SOLUTIONS (3-COLUMN GRID) -->
-    <section id="loi-ich" class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-accent-600 font-bold text-xs sm:text-sm uppercase tracking-wider bg-accent-50 px-3.5 py-1.5 rounded-full">
-                    Phương pháp độc quyền tại TANDAT ENGLISH
-                </span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 mt-4 leading-tight">
-                    Đập Tan 3 Rào Cản Lớn Nhất Của Người Mất Gốc Tiếng Anh
-                </h2>
-                <p class="text-slate-600 mt-3 text-base sm:text-lg">
-                    Tại <strong>TANDAT ENGLISH</strong>, bạn không học thuộc lòng công thức khô khan mà đi theo đúng quy trình tự nhiên: <strong>Chuẩn hóa phát âm IPA → Nạp từ vựng thực chiến → Phản xạ giao tiếp 1-1</strong>.
-                </p>
-            </div>
-
-            <!-- 3-Column Comparison Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Card 1 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between">
-                    <div>
-                        <!-- Nỗi đau -->
-                        <div class="bg-rose-50 border border-rose-200/70 rounded-2xl p-4 mb-6">
-                            <div class="flex items-center gap-2.5 text-rose-600 font-bold text-sm mb-1.5">
-                                <i class="fa-solid fa-circle-xmark text-base"></i>
-                                <span>Nỗi sợ #1: Sợ phát âm sai</span>
-                            </div>
-                            <p class="text-slate-600 text-sm">
-                                Đọc tiếng Anh theo kiểu "Việt hóa", mất âm đuôi, nhấn sai trọng âm khiến người nước ngoài không hiểu và bản thân ngại mở lời.
-                            </p>
-                        </div>
-
-                        <!-- Mũi tên chuyển đổi -->
-                        <div class="flex items-center gap-3 my-4">
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                            <span class="w-8 h-8 rounded-full bg-brand-700 text-white flex items-center justify-center text-xs shadow">
-                                <i class="fa-solid fa-arrow-down"></i>
-                            </span>
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                        </div>
-
-                        <!-- Giải pháp -->
-                        <div class="mt-2">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl mb-4">
-                                <i class="fa-solid fa-microphone-lines"></i>
-                            </div>
-                            <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">
-                                Chuẩn Hóa 44 Âm IPA Từ Gốc
-                            </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                Hướng dẫn chi tiết vị trí môi, răng, lưỡi cho từng nguyên âm và phụ âm. Chỉnh sửa trực tiếp từng từ cho đến khi bạn tự đọc chuẩn bất kỳ từ mới nào trong từ điển.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-brand-700">
-                        <span>Hiệu quả ngay sau 4 tuần đầu</span>
-                        <i class="fa-solid fa-check-double text-emerald-500 text-sm"></i>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between">
-                    <div>
-                        <!-- Nỗi đau -->
-                        <div class="bg-rose-50 border border-rose-200/70 rounded-2xl p-4 mb-6">
-                            <div class="flex items-center gap-2.5 text-rose-600 font-bold text-sm mb-1.5">
-                                <i class="fa-solid fa-circle-xmark text-base"></i>
-                                <span>Nỗi sợ #2: Học trước quên sau</span>
-                            </div>
-                            <p class="text-slate-600 text-sm">
-                                Học từ vựng rời rạc trên giấy, khi cần nói lại đứng dịch từng chữ từ tiếng Việt sang tiếng Anh nên ấp úng, không ghép thành câu trọn vẹn.
-                            </p>
-                        </div>
-
-                        <!-- Mũi tên chuyển đổi -->
-                        <div class="flex items-center gap-3 my-4">
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                            <span class="w-8 h-8 rounded-full bg-brand-700 text-white flex items-center justify-center text-xs shadow">
-                                <i class="fa-solid fa-arrow-down"></i>
-                            </span>
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                        </div>
-
-                        <!-- Giải pháp -->
-                        <div class="mt-2">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-accent-600 flex items-center justify-center text-xl mb-4">
-                                <i class="fa-solid fa-brain"></i>
-                            </div>
-                            <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">
-                                Phản Xạ Spaced Repetition
-                            </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                Nạp từ vựng theo <strong>cụm từ (Chunks)</strong> gắn liền với ngữ cảnh thực tế kết hợp thuật toán lặp lại ngắt quãng, giúp nhớ sâu gấp 5 lần mà không cần chép phạt.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-brand-700">
-                        <span>Nắm chắc 1.000+ từ thông dụng</span>
-                        <i class="fa-solid fa-check-double text-emerald-500 text-sm"></i>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between">
-                    <div>
-                        <!-- Nỗi đau -->
-                        <div class="bg-rose-50 border border-rose-200/70 rounded-2xl p-4 mb-6">
-                            <div class="flex items-center gap-2.5 text-rose-600 font-bold text-sm mb-1.5">
-                                <i class="fa-solid fa-circle-xmark text-base"></i>
-                                <span>Nỗi sợ #3: Nghe như "vịt nghe sấm"</span>
-                            </div>
-                            <p class="text-slate-600 text-sm">
-                                Nhìn mặt chữ thì biết nghĩa nhưng khi người bản xứ nói nhanh, nối âm hoặc nuốt âm là hoàn toàn không bắt kịp từ khóa.
-                            </p>
-                        </div>
-
-                        <!-- Mũi tên chuyển đổi -->
-                        <div class="flex items-center gap-3 my-4">
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                            <span class="w-8 h-8 rounded-full bg-brand-700 text-white flex items-center justify-center text-xs shadow">
-                                <i class="fa-solid fa-arrow-down"></i>
-                            </span>
-                            <div class="h-px bg-slate-200 flex-1"></div>
-                        </div>
-
-                        <!-- Giải pháp -->
-                        <div class="mt-2">
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4">
-                                <i class="fa-solid fa-comments"></i>
-                            </div>
-                            <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">
-                                Thực Hành Phản Xạ 1-1 Mỗi Ngày
-                            </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                Luyện nghe bắt từ khóa kết hợp đóng vai (Role-play) 36 tình huống giao tiếp đời sống & công việc cùng giảng viên và trợ giảng 1-1.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-brand-700">
-                        <span>Tự tin mở lời sau 90 ngày</span>
-                        <i class="fa-solid fa-check-double text-emerald-500 text-sm"></i>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. INTERACTIVE CURRICULUM TIMELINE (LỘ TRÌNH 3 GIAI ĐOẠN) -->
-    <section id="lo-trinh" class="py-16 sm:py-24 bg-slate-100/80 border-y border-slate-200/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-700 font-bold text-xs sm:text-sm uppercase tracking-wider bg-brand-100 px-3.5 py-1.5 rounded-full">
-                    Lộ trình 90 ngày tại TANDAT ENGLISH
-                </span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 mt-4">
-                    Lộ Trình 3 Giai Đoạn Từ Con Số 0 Đến Giao Tiếp Tự Tin
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Bấm vào từng giai đoạn bên dưới để khám phá chi tiết nội dung học, lịch trình hàng tuần và kết quả đầu ra tại <strong>TANDAT ENGLISH</strong>.
-                </p>
-            </div>
-
-            <!-- Nút chuyển đổi 3 giai đoạn (Timeline Tabs) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <button onclick="selectStage(1)" id="stage-btn-1" class="stage-btn text-left p-5 rounded-2xl border-2 transition-all bg-brand-900 text-white border-brand-900 shadow-lg">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-accent-500 text-white">Giai đoạn 1 • Tuần 1 - 4</span>
-                        <i class="fa-solid fa-volume-high text-xl text-amber-300"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg">Phá Băng & Chuẩn Hóa Âm IPA</h3>
-                    <p class="text-xs text-slate-200 mt-1">Làm chủ 44 âm IPA, xây nền tảng nghe - đọc chuẩn xác</p>
-                </button>
-
-                <button onclick="selectStage(2)" id="stage-btn-2" class="stage-btn text-left p-5 rounded-2xl border-2 transition-all bg-white text-slate-800 border-slate-200 hover:border-brand-400">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-brand-100 text-brand-800">Giai đoạn 2 • Tuần 5 - 8</span>
-                        <i class="fa-solid fa-layer-group text-xl text-brand-600"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg">Xây Nền Từ Vựng & Phản Xạ Câu</h3>
-                    <p class="text-xs text-slate-500 mt-1">Nạp 1.000 từ thực chiến, bỏ thói quen dịch từng chữ trong đầu</p>
-                </button>
-
-                <button onclick="selectStage(3)" id="stage-btn-3" class="stage-btn text-left p-5 rounded-2xl border-2 transition-all bg-white text-slate-800 border-slate-200 hover:border-brand-400">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-brand-100 text-brand-800">Giai đoạn 3 • Tuần 9 - 12</span>
-                        <i class="fa-solid fa-comments text-xl text-brand-600"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg">Giao Tiếp Thực Chiến & Thuyết Trình Tự Tin</h3>
-                    <p class="text-xs text-slate-500 mt-1">Thực hành phản xạ đối thoại công việc, du lịch & đời sống</p>
-                </button>
-            </div>
-
-            <!-- Khung hiển thị chi tiết từng giai đoạn (Dynamic Panel) -->
-            <div id="stage-content-panel" class="bg-white rounded-3xl p-6 sm:p-10 shadow-soft border border-slate-200/80 transition-all">
-                <!-- Nội dung được render tự động bởi JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. INTERACTIVE MINI DEMO ("TRẢI NGHIỆM HỌC THỬ CÙNG TANDAT ENGLISH") -->
-    <section id="hoc-thu" class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-emerald-700 font-bold text-xs sm:text-sm uppercase tracking-wider bg-emerald-100 px-3.5 py-1.5 rounded-full">
-                    Tương tác trực tiếp ngay trên web
-                </span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 mt-4">
-                    Trải Nghiệm Học Thử Cùng TANDAT ENGLISH
-                </h2>
-                <p class="text-slate-600 mt-3">
-                    Hãy tự mình trải nghiệm Flashcard 3D tích hợp phát âm chuẩn của <strong>TANDAT ENGLISH</strong> hoặc làm bài kiểm tra 3 câu để nhận gợi ý khóa học phù hợp nhất.
-                </p>
-            </div>
-
-            <!-- Nút chuyển Tab Học thử / Bài Test -->
-            <div class="flex justify-center mb-10">
-                <div class="inline-flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-                    <button onclick="switchDemoTab('flashcard')" id="tab-btn-flashcard" class="px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all bg-brand-800 text-white shadow">
-                        <i class="fa-solid fa-volume-high mr-2"></i>1. Học thử Flashcard Phát Âm
-                    </button>
-                    <button onclick="switchDemoTab('quiz')" id="tab-btn-quiz" class="px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all text-slate-600 hover:text-slate-900">
-                        <i class="fa-solid fa-clipboard-check mr-2"></i>2. Bài Test Trình Độ (1 Phút)
-                    </button>
-                </div>
-            </div>
-
-            <!-- TAB 1: INTERACTIVE FLIP FLASHCARDS WITH WEB SPEECH API -->
-            <div id="demo-tab-flashcard" class="space-y-6">
-                <div class="bg-brand-50 border border-brand-200/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-brand-900">
-                    <div class="flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-xl bg-brand-700 text-white flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-hand-pointer"></i>
-                        </span>
-                        <span><strong>Hướng dẫn:</strong> Bấm nút <strong>"Nghe chuẩn"</strong> để nghe giọng đọc bản xứ hoặc <strong>"Lật xem mẹo"</strong> để xem bí quyết phát âm của TANDAT ENGLISH!</span>
-                    </div>
-                    <span id="speech-status" class="text-xs font-semibold bg-white px-3 py-1.5 rounded-lg border border-brand-200 shrink-0">
-                        <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Âm thanh sẵn sàng
-                    </span>
-                </div>
-
-                <!-- Grid 4 Flashcards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
-                    <!-- Flashcard 1 -->
-                    <div class="perspective-1000 h-80">
-                        <div id="card-1" class="transform-style-3d relative w-full h-full rounded-3xl shadow-soft border border-slate-200 bg-white">
-                            <!-- Mặt trước -->
-                            <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full">Hay đọc sai #1</span>
-                                    <span class="text-xs font-mono text-slate-400">IPA /wenz.deɪ/</span>
-                                </div>
-                                <div class="text-center my-auto">
-                                    <h3 class="font-heading font-extrabold text-3xl text-brand-900 mb-1">Wednesday</h3>
-                                    <p class="text-sm text-slate-500 font-medium">Thứ Tư</p>
-                                    <p class="text-xs text-rose-500 mt-3 line-through">Hay đọc nhầm: "Quét-nét-đây"</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <button onclick="speakSampleText('Wednesday. Lets have a meeting on Wednesday.')" class="bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-volume-high"></i> Nghe chuẩn
-                                    </button>
-                                    <button onclick="flipCard('card-1')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-rotate"></i> Lật xem mẹo
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Mặt sau -->
-                            <div class="backface-hidden rotate-y-180 absolute inset-0 p-6 bg-brand-900 text-white rounded-3xl flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold text-amber-300 uppercase">Bí quyết phát âm</span>
-                                    <button onclick="flipCard('card-1')" class="text-white/70 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-                                </div>
-                                <div class="space-y-3 text-sm">
-                                    <p><strong class="text-amber-300">Âm câm:</strong> Chữ <strong>"d"</strong> ở giữa bị câm hoàn toàn. Chỉ đọc gọn 2 âm tiết là <strong>"WENZ-day"</strong>.</p>
-                                    <div class="bg-white/10 p-3 rounded-xl text-xs">
-                                        <p class="font-semibold text-white">"Let's have a meeting on Wednesday."</p>
-                                        <p class="text-slate-300 mt-1">Hãy họp vào thứ Tư nhé.</p>
-                                    </div>
-                                </div>
-                                <button onclick="flipCard('card-1')" class="w-full bg-white/15 hover:bg-white/25 text-white text-xs font-bold py-2.5 rounded-xl transition">
-                                    Quay lại mặt trước
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Flashcard 2 -->
-                    <div class="perspective-1000 h-80">
-                        <div id="card-2" class="transform-style-3d relative w-full h-full rounded-3xl shadow-soft border border-slate-200 bg-white">
-                            <!-- Mặt trước -->
-                            <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full">Hay đọc sai #2</span>
-                                    <span class="text-xs font-mono text-slate-400">IPA /ˈvedʒ.tə.bəl/</span>
-                                </div>
-                                <div class="text-center my-auto">
-                                    <h3 class="font-heading font-extrabold text-3xl text-brand-900 mb-1">Vegetable</h3>
-                                    <p class="text-sm text-slate-500 font-medium">Rau củ</p>
-                                    <p class="text-xs text-rose-500 mt-3 line-through">Hay đọc nhầm: "Ve-ge-tây-bồ"</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <button onclick="speakSampleText('Vegetable. Fresh vegetables are good for your health.')" class="bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-volume-high"></i> Nghe chuẩn
-                                    </button>
-                                    <button onclick="flipCard('card-2')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-rotate"></i> Lật xem mẹo
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Mặt sau -->
-                            <div class="backface-hidden rotate-y-180 absolute inset-0 p-6 bg-brand-900 text-white rounded-3xl flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold text-amber-300 uppercase">Bí quyết phát âm</span>
-                                    <button onclick="flipCard('card-2')" class="text-white/70 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-                                </div>
-                                <div class="space-y-3 text-sm">
-                                    <p><strong class="text-amber-300">Lược âm:</strong> Chữ <strong>"e"</strong> thứ hai bị câm. Từ này chỉ có 3 âm tiết: <strong>"VEDJ-tơ-bồ"</strong>.</p>
-                                    <div class="bg-white/10 p-3 rounded-xl text-xs">
-                                        <p class="font-semibold text-white">"Fresh vegetables are good for your health."</p>
-                                        <p class="text-slate-300 mt-1">Rau củ tươi rất tốt cho sức khỏe của bạn.</p>
-                                    </div>
-                                </div>
-                                <button onclick="flipCard('card-2')" class="w-full bg-white/15 hover:bg-white/25 text-white text-xs font-bold py-2.5 rounded-xl transition">
-                                    Quay lại mặt trước
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Flashcard 3 -->
-                    <div class="perspective-1000 h-80">
-                        <div id="card-3" class="transform-style-3d relative w-full h-full rounded-3xl shadow-soft border border-slate-200 bg-white">
-                            <!-- Mặt trước -->
-                            <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full">Hay đọc sai #3</span>
-                                    <span class="text-xs font-mono text-slate-400">IPA /ˈʃed.juːl/</span>
-                                </div>
-                                <div class="text-center my-auto">
-                                    <h3 class="font-heading font-extrabold text-3xl text-brand-900 mb-1">Schedule</h3>
-                                    <p class="text-sm text-slate-500 font-medium">Lịch trình</p>
-                                    <p class="text-xs text-rose-500 mt-3 line-through">Hay đọc nhầm: "Sờ-che-đun"</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <button onclick="speakSampleText('Schedule. Let me check my schedule for tomorrow.')" class="bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-volume-high"></i> Nghe chuẩn
-                                    </button>
-                                    <button onclick="flipCard('card-3')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-rotate"></i> Lật xem mẹo
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Mặt sau -->
-                            <div class="backface-hidden rotate-y-180 absolute inset-0 p-6 bg-brand-900 text-white rounded-3xl flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold text-amber-300 uppercase">Bí quyết phát âm</span>
-                                    <button onclick="flipCard('card-3')" class="text-white/70 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-                                </div>
-                                <div class="space-y-3 text-sm">
-                                    <p><strong class="text-amber-300">Anh - Mỹ:</strong> Đọc cụm đầu là <strong>"SKED-ju-ồ"</strong>. Tuyệt đối không tách âm /s/ rời ra thành "sờ".</p>
-                                    <div class="bg-white/10 p-3 rounded-xl text-xs">
-                                        <p class="font-semibold text-white">"Let me check my schedule for tomorrow."</p>
-                                        <p class="text-slate-300 mt-1">Để tôi kiểm tra lịch trình ngày mai nhé.</p>
-                                    </div>
-                                </div>
-                                <button onclick="flipCard('card-3')" class="w-full bg-white/15 hover:bg-white/25 text-white text-xs font-bold py-2.5 rounded-xl transition">
-                                    Quay lại mặt trước
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Flashcard 4 -->
-                    <div class="perspective-1000 h-80">
-                        <div id="card-4" class="transform-style-3d relative w-full h-full rounded-3xl shadow-soft border border-slate-200 bg-white">
-                            <!-- Mặt trước -->
-                            <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full">Hay đọc sai #4</span>
-                                    <span class="text-xs font-mono text-slate-400">IPA /rɪˈsiːt/</span>
-                                </div>
-                                <div class="text-center my-auto">
-                                    <h3 class="font-heading font-extrabold text-3xl text-brand-900 mb-1">Receipt</h3>
-                                    <p class="text-sm text-slate-500 font-medium">Hóa đơn / Biên lai</p>
-                                    <p class="text-xs text-rose-500 mt-3 line-through">Hay đọc nhầm: "Ri-xếp-tờ"</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <button onclick="speakSampleText('Receipt. Could I have the receipt, please?')" class="bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-volume-high"></i> Nghe chuẩn
-                                    </button>
-                                    <button onclick="flipCard('card-4')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
-                                        <i class="fa-solid fa-rotate"></i> Lật xem mẹo
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Mặt sau -->
-                            <div class="backface-hidden rotate-y-180 absolute inset-0 p-6 bg-brand-900 text-white rounded-3xl flex flex-col justify-between">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs font-bold text-amber-300 uppercase">Bí quyết phát âm</span>
-                                    <button onclick="flipCard('card-4')" class="text-white/70 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-                                </div>
-                                <div class="space-y-3 text-sm">
-                                    <p><strong class="text-amber-300">Âm câm:</strong> Chữ <strong>"p"</strong> ở gần cuối bị câm hoàn toàn. Đọc kéo dài âm /i:/ thành <strong>"rì-SI:T"</strong>.</p>
-                                    <div class="bg-white/10 p-3 rounded-xl text-xs">
-                                        <p class="font-semibold text-white">"Could I have the receipt, please?"</p>
-                                        <p class="text-slate-300 mt-1">Cho tôi xin hóa đơn được không ạ?</p>
-                                    </div>
-                                </div>
-                                <button onclick="flipCard('card-4')" class="w-full bg-white/15 hover:bg-white/25 text-white text-xs font-bold py-2.5 rounded-xl transition">
-                                    Quay lại mặt trước
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- TAB 2: INTERACTIVE 3-QUESTION PLACEMENT QUIZ -->
-            <div id="demo-tab-quiz" class="hidden max-w-3xl mx-auto">
-                <div class="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-soft">
-                    <div id="quiz-container">
-                        <!-- Nội dung câu hỏi được render động bởi JS -->
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 6. PRICING TABLE (3 TIERS AT TANDAT ENGLISH) -->
-    <section id="hoc-phi" class="py-16 sm:py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-wider bg-white/10 px-3.5 py-1.5 rounded-full">
-                    Đầu tư 1 lần - Tự tin giao tiếp trọn đời cùng TANDAT ENGLISH
-                </span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl mt-4">
-                    Bảng Học Phí & Chương Trình Học Bổng 40%
-                </h2>
-                <p class="text-slate-300 mt-3">
-                    Cam kết minh bạch chi phí tại <strong>TANDAT ENGLISH</strong>, tặng kèm bộ quà tặng độc quyền và hỗ trợ chia nhỏ học phí 0% lãi suất.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                
-                <!-- Tier 1: Gói Cơ Bản -->
-                <div class="bg-slate-800/90 border border-slate-700 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-500 transition-all">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-300 bg-slate-700 px-3 py-1 rounded-full">Gói Cơ Bản</span>
-                            <span class="text-xs text-slate-400">6 Tuần</span>
-                        </div>
-                        <h3 class="font-heading font-extrabold text-2xl text-white">Gói Cơ Bản (Lấy Lại Gốc)</h3>
-                        <p class="text-slate-400 text-sm mt-2">Phù hợp cho người mới bắt đầu muốn chuẩn hóa phát âm IPA và nắm vững từ vựng nền tảng.</p>
-
-                        <div class="my-6 pt-6 border-t border-slate-700">
-                            <div class="text-sm text-slate-400 line-through">Học phí gốc: 3.200.000đ</div>
-                            <div class="flex items-baseline gap-2 mt-1">
-                                <span class="font-heading font-extrabold text-4xl text-white">1.890.000đ</span>
-                                <span class="text-xs text-slate-400">/ trọn khóa</span>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-3.5 text-sm text-slate-200 mb-8">
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Chuẩn hóa trọn bộ <strong>44 âm IPA</strong> chuẩn quốc tế</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Nạp <strong>500 từ vựng</strong> & cụm câu thông dụng nhất</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Lớp học nhóm nhỏ tương tác trực tiếp</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Trợ giảng TANDAT ENGLISH chấm chữa bài mỗi ngày</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="selectPackageAndScroll('Gói Cơ Bản (1.890.000đ)')" class="w-full bg-white/10 hover:bg-white/20 text-white font-heading font-bold py-4 rounded-2xl border border-white/20 transition-all">
-                        Chọn Gói Cơ Bản
-                    </button>
-                </div>
-
-                <!-- Tier 2: Gói Tiêu Chuẩn - Bán chạy nhất -->
-                <div class="bg-gradient-to-b from-brand-700 to-brand-900 border-2 border-accent-500 rounded-3xl p-8 flex flex-col justify-between shadow-2xl relative lg:-translate-y-4">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-500 text-white font-heading font-bold text-xs uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 whitespace-nowrap">
-                        <i class="fa-solid fa-fire"></i> Bán chạy nhất tại TANDAT ENGLISH
-                    </div>
-
-                    <div>
-                        <div class="flex items-center justify-between mb-4 mt-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-white/10 px-3 py-1 rounded-full">Gói Tiêu Chuẩn</span>
-                            <span class="text-xs text-amber-200 font-semibold">Trọn lộ trình 12 Tuần</span>
-                        </div>
-                        <h3 class="font-heading font-extrabold text-2xl text-white">Gói Tiêu Chuẩn Toàn Diện</h3>
-                        <p class="text-blue-100 text-sm mt-2">Đi trọn lộ trình 3 giai đoạn từ mất gốc hoàn toàn đến tự tin phản xạ giao tiếp & thuyết trình.</p>
-
-                        <div class="my-6 pt-6 border-t border-white/15">
-                            <div class="text-sm text-blue-200 line-through">Học phí gốc: 5.800.000đ</div>
-                            <div class="flex items-baseline gap-2 mt-1">
-                                <span class="font-heading font-extrabold text-4xl text-amber-300">3.490.000đ</span>
-                                <span class="text-xs text-blue-100">/ trọn khóa 90 ngày</span>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-3.5 text-sm text-white mb-8">
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-amber-300 mt-1"></i>
-                                <span><strong>Trọn bộ 3 Giai Đoạn:</strong> Phá băng IPA + 1.000 Từ vựng + 36 Tình huống thực chiến</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-amber-300 mt-1"></i>
-                                <span><strong>24 buổi thực hành Phản xạ 1-1</strong> cùng đội ngũ TANDAT ENGLISH</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-amber-300 mt-1"></i>
-                                <span>Tặng Bộ Flashcard 1.000 từ & Kho bài nghe trọn đời</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-amber-300 mt-1"></i>
-                                <span><strong>Cam kết đầu ra bằng văn bản</strong> - Học lại miễn phí nếu chưa đạt</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="selectPackageAndScroll('Gói Tiêu Chuẩn - Bán chạy nhất (3.490.000đ)')" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold py-4 rounded-2xl shadow-glow transition-all">
-                        Chọn Gói Tiêu Chuẩn →
-                    </button>
-                </div>
-
-                <!-- Tier 3: Gói VIP Kèm 1-1 -->
-                <div class="bg-slate-800/90 border border-slate-700 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-500 transition-all">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-500/20 px-3 py-1 rounded-full">Gói VIP Kèm 1-1</span>
-                            <span class="text-xs text-slate-400">Linh hoạt 8 - 12 Tuần</span>
-                        </div>
-                        <h3 class="font-heading font-extrabold text-2xl text-white">Gói VIP Kèm 1-1 Cá Nhân Hóa</h3>
-                        <p class="text-slate-400 text-sm mt-2">Dành cho người đi làm bận rộn, cần lịch học linh hoạt hoặc cần gấp tiếng Anh phỏng vấn, công việc.</p>
-
-                        <div class="my-6 pt-6 border-t border-slate-700">
-                            <div class="text-sm text-slate-400 line-through">Học phí gốc: 9.500.000đ</div>
-                            <div class="flex items-baseline gap-2 mt-1">
-                                <span class="font-heading font-extrabold text-4xl text-white">5.690.000đ</span>
-                                <span class="text-xs text-slate-400">/ trọn khóa VIP</span>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-3.5 text-sm text-slate-200 mb-8">
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span><strong>1 Giảng viên TANDAT ENGLISH kèm 1 Học viên</strong> xuyên suốt</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Chủ động chọn khung giờ học (7h00 - 22h30 mỗi ngày)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Thiết kế giáo trình riêng theo đúng ngành nghề của bạn</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span>Luyện phỏng vấn CV, thuyết trình & viết Email công sở</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="selectPackageAndScroll('Gói VIP Kèm 1-1 (5.690.000đ)')" class="w-full bg-white/10 hover:bg-white/20 text-white font-heading font-bold py-4 rounded-2xl border border-white/20 transition-all">
-                        Chọn Gói VIP Kèm 1-1
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. STUDENT TESTIMONIALS & INTERACTIVE FAQ ACCORDION -->
-    <section id="cam-nhan" class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Phần Đánh giá học viên -->
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-brand-700 font-bold text-xs sm:text-sm uppercase tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full">
-                    Niềm tự hào của TANDAT ENGLISH
-                </span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 mt-4">
-                    Hơn 5.000 Học Viên Đã Xóa Mất Gốc Tại TANDAT ENGLISH
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                <!-- Review 1 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "Trước khi biết đến TANDAT ENGLISH mình mất gốc suốt nhiều năm, nhìn chữ tiếng Anh là ngại đọc. Nhờ 4 tuần đầu phá băng chỉnh từng âm IPA tận tình mà giờ mình nhìn phiên âm tự đọc chuẩn được luôn, đi phỏng vấn tự tin hẳn!"
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-4 border-t border-slate-200">
-                        <div class="w-11 h-11 rounded-full bg-brand-700 text-white font-heading font-bold flex items-center justify-center">
-                            M
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-slate-900 text-sm">Bạn Nguyễn Minh Thư</h4>
-                            <p class="text-xs text-slate-500">Sinh viên năm cuối • Học viên Gói Tiêu Chuẩn</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "Mình đi làm kỹ thuật bận rộn nên rất sợ học lý thuyết dài dòng. Lộ trình của TANDAT ENGLISH nạp cụm từ thực chiến và luyện phản xạ 1-1 mỗi tối 30 phút cực kỳ hợp với người đi làm. Sau 3 tháng mình đã tự giao tiếp với đối tác được."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-4 border-t border-slate-200">
-                        <div class="w-11 h-11 rounded-full bg-accent-500 text-white font-heading font-bold flex items-center justify-center">
-                            H
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-slate-900 text-sm">Anh Trần Hoàng Nam</h4>
-                            <p class="text-xs text-slate-500">Kỹ sư phần mềm • Học viên Gói VIP Kèm 1-1</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/80 shadow-soft flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "Ấn tượng nhất ở TANDAT ENGLISH là sự kiên nhẫn của giảng viên và trợ giảng. Mình phát âm sai từ 'Schedule' cả chục lần vẫn được sửa nhẹ nhàng từng chút một. Khóa học thực sự cứu cánh cho những ai tự ti ngoại ngữ lâu năm."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-4 border-t border-slate-200">
-                        <div class="w-11 h-11 rounded-full bg-emerald-600 text-white font-heading font-bold flex items-center justify-center">
-                            L
-                        </div>
-                        <div>
-                            <h4 class="font-heading font-bold text-slate-900 text-sm">Chị Lê Thanh Lan</h4>
-                            <p class="text-xs text-slate-500">Nhân viên Kế toán • Học viên Gói Tiêu Chuẩn</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phần FAQ Accordion -->
-            <div id="faq" class="max-w-3xl mx-auto pt-8 border-t border-slate-200">
-                <div class="text-center mb-10">
-                    <span class="text-accent-600 font-bold text-xs uppercase tracking-wider">Giải đáp thắc mắc cùng TANDAT ENGLISH</span>
-                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-2">
-                        Câu Hỏi Thường Gặp Của Người Mới Bắt Đầu
-                    </h3>
-                </div>
-
-                <div class="space-y-4">
-                    <!-- FAQ Item 1 -->
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
-                        <button onclick="toggleFaq(1)" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading font-bold text-slate-900 hover:bg-slate-100 transition">
-                            <span>1. Mình mất gốc hoàn toàn (chưa biết gì) thì học tại TANDAT ENGLISH có theo kịp không?</span>
-                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-700 transition-transform duration-300 rotate-180"></i>
-                        </button>
-                        <div id="faq-ans-1" class="px-6 pb-5 text-sm text-slate-600 leading-relaxed">
-                            Hoàn toàn theo kịp! Giáo trình của <strong>TANDAT ENGLISH</strong> được thiết kế chuyên biệt từ con số 0. Trong 4 tuần đầu tiên (Phá băng & Chuẩn hóa âm IPA), bạn được hướng dẫn từ cách đặt khẩu hình miệng và có trợ giảng kèm 1-1 sửa bài hàng ngày trước khi bước vào giai đoạn ghép câu.
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 2 -->
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
-                        <button onclick="toggleFaq(2)" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading font-bold text-slate-900 hover:bg-slate-100 transition">
-                            <span>2. Nếu mình bận đột xuất nghỉ học thì có được học bù không?</span>
-                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-700 transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-ans-2" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
-                            Có! Toàn bộ buổi học tại <strong>TANDAT ENGLISH</strong> đều có video ghi hình chất lượng cao để bạn xem lại bất cứ lúc nào. Ngoài ra, bạn được hỗ trợ xếp lịch học bù miễn phí hoặc kèm 1-1 cùng trợ giảng để không bị hổng kiến thức.
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 3 -->
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
-                        <button onclick="toggleFaq(3)" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading font-bold text-slate-900 hover:bg-slate-100 transition">
-                            <span>3. Cam kết đầu ra bằng văn bản tại TANDAT ENGLISH cụ thể như thế nào?</span>
-                            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-700 transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-ans-3" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
-                            Khi đăng ký học, bạn được cam kết lộ trình rõ ràng. Chỉ cần bạn tham gia tối thiểu 85% số buổi học và hoàn thành bài tập thực hành, nếu kết thúc 90 ngày chưa tự tin giao tiếp đầu ra, <strong>TANDAT ENGLISH</strong> hỗ trợ đào tạo lại hoàn toàn miễn phí 100%.
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 4 -->
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
-                        <button onclick="toggleFaq(4)" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading font-bold text-slate-900 hover:bg-slate-100 transition">
-                            <span>4. Học phí có được chia nhỏ hoặc trả góp không?</span>
-                            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-brand-700 transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-ans-4" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
-                            <strong>TANDAT ENGLISH</strong> hỗ trợ chia học phí thành 2 đợt đóng linh hoạt hoặc trả góp 0% lãi suất cho sinh viên và người đi làm mà vẫn giữ nguyên mức học bổng giảm 40%.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 8. REGISTRATION FORM WITH VALIDATION & COUNTDOWN TIMER -->
-    <section id="dang-ky" class="py-16 sm:py-24 bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 text-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Cột trái: Thông tin ưu đãi & Đồng hồ đếm ngược -->
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-accent-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full">
-                        <i class="fa-solid fa-gift"></i> Ưu đãi học bổng TANDAT ENGLISH
-                    </span>
-
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl leading-tight">
-                        Đăng Ký Học Thử Miễn Phí & Giữ Suất Học Bổng <span class="text-amber-300">40% Học Phí</span>
-                    </h2>
-
-                    <p class="text-slate-200 text-base leading-relaxed">
-                        Để lại thông tin bên cạnh, Cố vấn học tập của <strong>TANDAT ENGLISH</strong> sẽ liên hệ trong vòng 15 phút để xếp lịch học thử 1-1 và gửi tặng bạn bộ tài liệu tự học phát âm IPA.
-                    </p>
-
-                    <!-- Countdown Timer Box -->
-                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-amber-300 mb-3 flex items-center gap-2">
-                            <i class="fa-regular fa-clock"></i> Thời gian còn lại của ưu đãi học bổng:
-                        </p>
-                        <div class="grid grid-cols-4 gap-3 text-center">
-                            <div class="bg-brand-950/70 rounded-2xl p-3 border border-white/10">
-                                <span id="cd-days" class="font-heading font-extrabold text-2xl sm:text-3xl text-white block">02</span>
-                                <span class="text-[11px] text-slate-300 uppercase">Ngày</span>
-                            </div>
-                            <div class="bg-brand-950/70 rounded-2xl p-3 border border-white/10">
-                                <span id="cd-hours" class="font-heading font-extrabold text-2xl sm:text-3xl text-white block">14</span>
-                                <span class="text-[11px] text-slate-300 uppercase">Giờ</span>
-                            </div>
-                            <div class="bg-brand-950/70 rounded-2xl p-3 border border-white/10">
-                                <span id="cd-minutes" class="font-heading font-extrabold text-2xl sm:text-3xl text-white block">38</span>
-                                <span class="text-[11px] text-slate-300 uppercase">Phút</span>
-                            </div>
-                            <div class="bg-brand-950/70 rounded-2xl p-3 border border-white/10">
-                                <span id="cd-seconds" class="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300 block">45</span>
-                                <span class="text-[11px] text-slate-300 uppercase">Giây</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quà tặng kèm -->
-                    <div class="space-y-3 pt-2 text-sm text-slate-200">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
-                            <span>Miễn phí 01 buổi <strong>Kiểm tra trình độ & Học thử 1-1</strong> tại TANDAT ENGLISH</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
-                            <span>Tặng ngay Ebook <strong>"1.000 Cụm Từ Giao Tiếp Thực Chiến"</strong> (PDF + Audio)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cột phải: Form đăng ký có kiểm tra dữ liệu (Validation) -->
-                <div class="lg:col-span-6">
-                    <div id="form-card" class="bg-white text-slate-800 rounded-3xl p-7 sm:p-10 shadow-2xl border border-slate-100 transition-all duration-300">
-                        <div class="mb-6">
-                            <h3 class="font-heading font-extrabold text-2xl text-slate-900">Đăng Ký Tư Vấn Cùng TANDAT ENGLISH</h3>
-                            <p class="text-sm text-slate-500 mt-1">Điền thông tin chính xác để nhận lộ trình cá nhân hóa và giữ suất học bổng 40%.</p>
-                        </div>
-
-                        <form id="registration-form" onsubmit="handleFormSubmit(event)" novalidate class="space-y-5">
-                            <!-- Họ và tên -->
-                            <div>
-                                <label for="fullname" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                                    Họ và tên của bạn <span class="text-rose-500">*</span>
-                                </label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
-                                        <i class="fa-regular fa-user"></i>
-                                    </span>
-                                    <input type="text" id="fullname" placeholder="VD: Nguyễn Tấn Đạt" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
-                                </div>
-                                <p id="err-fullname" class="hidden text-xs text-rose-600 font-medium mt-1.5">
-                                    <i class="fa-solid fa-circle-exclamation mr-1"></i> Vui lòng nhập họ và tên của bạn (tối thiểu 2 ký tự).
-                                </p>
-                            </div>
-
-                            <!-- Số điện thoại -->
-                            <div>
-                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                                    Số điện thoại (Zalo) <span class="text-rose-500">*</span>
-                                </label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </span>
-                                    <input type="tel" id="phone" placeholder="VD: 0912345678" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
-                                </div>
-                                <p id="err-phone" class="hidden text-xs text-rose-600 font-medium mt-1.5">
-                                    <i class="fa-solid fa-circle-exclamation mr-1"></i> Vui lòng nhập số điện thoại hợp lệ (10 chữ số, bắt đầu bằng số 0).
-                                </p>
-                            </div>
-
-                            <!-- Đối tượng & Mục tiêu học -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="goal" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                                        Mục tiêu học hiện tại
-                                    </label>
-                                    <select id="goal" class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-200 outline-none text-sm bg-white">
-                                        <option value="Sinh viên cần giao tiếp & ra trường">Sinh viên (Giao tiếp & Ra trường)</option>
-                                        <option value="Người đi làm cần giao tiếp công việc">Người đi làm (Giao tiếp & Phỏng vấn)</option>
-                                        <option value="Người mất gốc lâu năm muốn học lại">Mất gốc lâu năm muốn học từ đầu</option>
-                                        <option value="Tiếng Anh du lịch & định cư">Tiếng Anh du lịch & Đời sống</option>
-                                    </select>
-                                </div>
-
-                                <!-- Gói khóa học quan tâm -->
-                                <div>
-                                    <label for="package" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                                        Gói khóa học quan tâm
-                                    </label>
-                                    <select id="package" class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-200 outline-none text-sm bg-white font-medium text-brand-900">
-                                        <option value="Gói Tiêu Chuẩn - Bán chạy nhất (3.490.000đ)">Gói Tiêu Chuẩn (3.490.000đ)</option>
-                                        <option value="Gói Cơ Bản (1.890.000đ)">Gói Cơ Bản (1.890.000đ)</option>
-                                        <option value="Gói VIP Kèm 1-1 (5.690.000đ)">Gói VIP Kèm 1-1 (5.690.000đ)</option>
-                                        <option value="Cần tư vấn chọn gói phù hợp">Cần tư vấn thêm</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Nút Gửi Đăng Ký -->
-                            <button type="submit" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold text-base py-4 rounded-2xl shadow-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
-                                <span>Hoàn Tất Đăng Ký Tại TANDAT ENGLISH</span>
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-
-                            <p class="text-[11px] text-slate-400 text-center">
-                                <i class="fa-solid fa-lock mr-1"></i> Thông tin của bạn được bảo mật tuyệt đối 100% tại TANDAT ENGLISH.
-                            </p>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER (TANDAT ENGLISH) -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-700 to-accent-500 flex items-center justify-center text-white">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div>
-                    <span class="font-heading font-extrabold text-white block">TANDAT ENGLISH</span>
-                    <span class="text-xs text-slate-500">Hệ thống đào tạo Tiếng Anh Cho Người Mới Bắt Đầu • Kèm 1-1 chuẩn IPA</span>
-                </div>
-            </div>
-            <div class="flex flex-wrap items-center gap-4">
-                <span class="text-xs text-slate-500">© 2026 TANDAT ENGLISH. All rights reserved.</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- MODAL XÁC NHẬN ĐĂNG KÝ THÀNH CÔNG -->
-    <div id="success-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-7 sm:p-8 text-center shadow-2xl border border-slate-100 animate-fade-in">
-            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-4">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h3 class="font-heading font-extrabold text-2xl text-slate-900">Đăng Ký Thành Công!</h3>
-            <p class="text-sm text-slate-600 mt-2">
-                Chúc mừng <strong id="modal-student-name" class="text-brand-800">bạn</strong> đã giữ suất học bổng 40% tại <strong>TANDAT ENGLISH</strong>.
-            </p>
-            <div class="bg-slate-50 rounded-2xl p-4 my-5 text-left text-xs space-y-2 border border-slate-200">
-                <div class="flex justify-between">
-                    <span class="text-slate-500">Số điện thoại:</span>
-                    <strong id="modal-student-phone" class="text-slate-800"></strong>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-slate-500">Gói đã chọn:</span>
-                    <strong id="modal-student-package" class="text-brand-700"></strong>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-slate-500">Mục tiêu:</span>
-                    <strong id="modal-student-goal" class="text-slate-800"></strong>
-                </div>
-            </div>
-            <p class="text-xs text-slate-500 mb-6">
-                Cố vấn học tập của <strong>TANDAT ENGLISH</strong> sẽ liên hệ qua Zalo trong ít phút tới để gửi lịch học thử 1-1 và bộ quà tặng Ebook IPA.
-            </p>
-            <button onclick="closeSuccessModal()" class="w-full bg-brand-800 hover:bg-brand-900 text-white font-heading font-bold py-3.5 rounded-xl transition">
-                Đã hiểu, quay lại trang chủ
-            </button>
-        </div>
+    <!-- ĐỒNG HỒ ĐẾM NGƯỢC 15:00 Ở GÓC (Dùng cho Cảnh 2 & Cảnh 3) -->
+    <div id="globalCountdownWidget" class="fixed sm:absolute top-12 right-3 z-40 bg-red-600 text-white px-3 py-1.5 rounded-2xl shadow-lg border-2 border-white flex items-center gap-2 urgent-pulse">
+      <i class="fa-solid fa-stopwatch text-sm"></i>
+      <div class="leading-none">
+        <div class="text-[9px] uppercase font-bold tracking-wider opacity-90">Hạn xác thực</div>
+        <div id="globalCountdownText" class="text-base font-black tracking-wider tabular-nums">15:00</div>
+      </div>
     </div>
 
-    <!-- JAVASCRIPT XỬ LÝ TOÀN BỘ TƯƠNG TÁC -->
-    <script>
-        // ==========================================
-        // 1. DỮ LIỆU LỘ TRÌNH 3 GIAI ĐOẠN TANDAT ENGLISH
-        // ==========================================
-        const stagesData = {
-            1: {
-                badge: "Giai đoạn 1 • Tuần 1 đến Tuần 4",
-                title: "Phá Băng & Chuẩn Hóa Âm IPA (44 Âm Quốc Tế)",
-                desc: "Chấm dứt hoàn toàn thói quen đọc tiếng Anh theo kiểu 'Việt hóa'. Tại TANDAT ENGLISH, bạn sẽ làm chủ khẩu hình miệng, trọng âm từ và nghe bắt âm chuẩn xác.",
-                outcomes: [
-                    "Nhìn phiên âm quốc tế IPA tự đọc đúng 100% bất kỳ từ mới nào trong từ điển.",
-                    "Phát âm rõ âm đuôi (Ending sounds), phân biệt nguyên âm ngắn - dài chuẩn xác.",
-                    "Hiểu quy tắc nối âm (Linking sounds) giúp nghe người bản xứ dễ dàng hơn."
-                ],
-                weeks: [
-                    { week: "Tuần 1", topic: "20 Nguyên âm đơn & Nguyên âm đôi", detail: "Khẩu hình miệng âm /ɪ/ - /i:/, /æ/ - /e/, /ʊ/ - /u:/" },
-                    { week: "Tuần 2", topic: "24 Phụ âm & Các cặp âm dễ nhầm lẫn", detail: "Chinh phục âm /θ/, /ð/, /ʃ/, /ʒ/, /tʃ/, /dʒ/" },
-                    { week: "Tuần 3", topic: "Trọng âm từ (Word Stress) & Âm câm", detail: "Quy tắc nhấn trọng âm và 50 từ chứa âm câm phổ biến" },
-                    { week: "Tuần 4", topic: "Ngữ điệu câu & Thực hành Shadowing", detail: "Luyện nhại giọng theo ngữ điệu lên xuống tự nhiên" }
-                ]
-            },
-            2: {
-                badge: "Giai đoạn 2 • Tuần 5 đến Tuần 8",
-                title: "Xây Nền Từ Vựng & Phản Xạ Câu Thực Chiến",
-                desc: "Áp dụng phương pháp học theo cụm từ (Chunking) và lặp lại ngắt quãng của TANDAT ENGLISH giúp bạn bật ra câu hoàn chỉnh trong 3 giây mà không cần dịch ngầm.",
-                outcomes: [
-                    "Sở hữu 1.000 từ vựng và 150 cụm từ chiếm 85% hội thoại giao tiếp hàng ngày.",
-                    "Nắm vững 12 cấu trúc câu cốt lõi để diễn đạt ý muốn ở quá khứ, hiện tại, tương lai.",
-                    "Tăng tốc độ phản xạ nghe - hiểu câu hỏi và trả lời ngay lập tức."
-                ],
-                weeks: [
-                    { week: "Tuần 5", topic: "Chủ đề Bản thân, Gia đình & Thói quen", detail: "250 cụm từ mô tả lịch trình và sở thích cá nhân" },
-                    { week: "Tuần 6", topic: "Chủ đề Mua sắm, Ẩm thực & Di chuyển", detail: "Cách đặt món, hỏi đường, mặc cả và thanh toán" },
-                    { week: "Tuần 7", topic: "Chủ đề Công sở, Email & Điện thoại", detail: "Mẫu câu hẹn lịch, trao đổi công việc cơ bản" },
-                    { week: "Tuần 8", topic: "Kể chuyện & Bày tỏ quan điểm cá nhân", detail: "Kết nối câu dài mượt mà bằng các từ nối tự nhiên" }
-                ]
-            },
-            3: {
-                badge: "Giai đoạn 3 • Tuần 9 đến Tuần 12",
-                title: "Giao Tiếp Thực Chiến & Thuyết Trình Tự Tin",
-                desc: "Đóng vai thực hành trực tiếp 1-1 cùng giảng viên TANDAT ENGLISH trong các tình huống đời sống, du lịch và phỏng vấn xin việc thực tế.",
-                outcomes: [
-                    "Tự tin bắt chuyện và duy trì cuộc hội thoại kéo dài 15-20 phút với người nước ngoài.",
-                    "Xử lý tình huống bất ngờ khi đi du lịch nước ngoài (sân bay, khách sạn, hải quan).",
-                    "Tự tin giới thiệu bản thân, trả lời phỏng vấn và thuyết trình ngắn bằng tiếng Anh."
-                ],
-                weeks: [
-                    { week: "Tuần 9", topic: "Thực chiến Tiếng Anh Du lịch & Sân bay", detail: "Làm thủ tục check-in, nhập cảnh, đặt phòng khách sạn" },
-                    { week: "Tuần 10", topic: "Thực chiến Giao tiếp Công sở & Họp nhóm", detail: "Đưa ý kiến trong cuộc họp, báo cáo tiến độ công việc" },
-                    { week: "Tuần 11", topic: "Chinh phục Phỏng vấn Tiếng Anh", detail: "Trả lời 15 câu hỏi phỏng vấn phổ biến nhất của HR" },
-                    { week: "Tuần 12", topic: "Thuyết trình Cuối khóa & Cấp Chứng nhận", detail: "Thuyết trình tự tin & Đánh giá đầu ra 1-1 tại TANDAT ENGLISH" }
-                ]
-            }
-        };
+    <!-- BANNER THÔNG BÁO NỔI TỪ ĐỈNH MÀN HÌNH (Push Notification cho SMS / OTP / Trừ tiền) -->
+    <div id="pushNotificationBanner" class="hidden absolute top-11 left-3 right-3 z-50 bg-slate-900/95 backdrop-blur-md text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700 cursor-pointer" onclick="handleBannerClick()">
+      <div class="flex items-start gap-3">
+        <div id="pushIconBox" class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 text-lg">
+          <i class="fa-solid fa-comment-sms"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between">
+            <span id="pushSender" class="font-extrabold text-sm text-amber-400 tracking-wide">[Ngân hàng] • Tin nhắn SMS</span>
+            <span class="text-[11px] text-slate-300 font-semibold">Bây giờ</span>
+          </div>
+          <p id="pushBody" class="text-sm font-semibold text-white mt-1 leading-snug">
+            [Ngân hàng] Tài khoản của bạn bị khóa do bất thường...
+          </p>
+          <span id="pushHint" class="inline-block mt-1.5 text-[11px] font-bold text-sky-400 underline">Chạm để mở / điền nhanh</span>
+        </div>
+      </div>
+    </div>
 
-        function selectStage(stageNum) {
-            // Cập nhật giao diện các nút tab
-            for (let i = 1; i <= 3; i++) {
-                const btn = document.getElementById(`stage-btn-${i}`);
-                if (i === stageNum) {
-                    btn.className = "stage-btn text-left p-5 rounded-2xl border-2 transition-all bg-brand-900 text-white border-brand-900 shadow-lg";
-                } else {
-                    btn.className = "stage-btn text-left p-5 rounded-2xl border-2 transition-all bg-white text-slate-800 border-slate-200 hover:border-brand-400";
-                }
-            }
+    <!-- ========================================== -->
+    <!-- KHU VỰC NỘI DUNG 5 MÀN HÌNH ĐẠO CỤ          -->
+    <!-- ========================================== -->
+    <main class="flex-1 flex flex-col overflow-y-auto no-scrollbar relative">
 
-            // Render nội dung chi tiết
-            const data = stagesData[stageNum];
-            const panel = document.getElementById('stage-content-panel');
+      <!-- ============================================================== -->
+      <!-- MÀN HÌNH 1: CẢNH 2 - TIN NHẮN ĐẾN (ỨNG DỤNG TIN NHẮN SMS)        -->
+      <!-- ============================================================== -->
+      <section id="screen-1" class="flex-1 flex flex-col bg-slate-100 h-full">
+        <!-- Header ứng dụng SMS -->
+        <div class="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-3">
+            <button class="text-blue-600 text-lg font-bold flex items-center gap-1">
+              <i class="fa-solid fa-chevron-left"></i>
+              <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">1</span>
+            </button>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-black text-base shadow-sm">
+              NH
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h1 class="font-black text-base text-slate-900 tracking-tight">[Ngân hàng]</h1>
+                <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">SMS</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Tin nhắn dịch vụ • Hôm nay</p>
+            </div>
+          </div>
+          <button onclick="switchScreen(5)" title="Xem chi tiết / Chặn số (Cảnh của Bình)" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700">
+            <i class="fa-solid fa-circle-info text-lg"></i>
+          </button>
+        </div>
 
-            const outcomesHtml = data.outcomes.map(item => `
-                <li class="flex items-start gap-3">
-                    <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        <i class="fa-solid fa-check"></i>
-                    </span>
-                    <span class="text-slate-700 text-sm">${item}</span>
-                </li>
-            `).join('');
+        <!-- Nội dung khung chat SMS -->
+        <div class="flex-1 p-4 space-y-4 overflow-y-auto flex flex-col">
+          <div class="text-center my-1">
+            <span class="text-xs font-bold text-slate-500 bg-slate-200/80 px-3 py-1 rounded-full">
+              Hôm nay, 09:40
+            </span>
+          </div>
 
-            const weeksHtml = data.weeks.map(w => `
-                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80">
-                    <span class="text-xs font-bold text-accent-600 uppercase">${w.week}</span>
-                    <h5 class="font-heading font-bold text-slate-900 text-sm mt-1">${w.topic}</h5>
-                    <p class="text-xs text-slate-500 mt-1">${w.detail}</p>
-                </div>
-            `).join('');
+          <!-- Tin nhắn cũ bình thường để tạo độ chân thực -->
+          <div class="max-w-[88%] self-start bg-white border border-slate-200 rounded-2xl rounded-tl-sm p-3.5 shadow-sm text-slate-700 text-sm font-medium leading-relaxed">
+            <span class="font-bold text-slate-900">[Ngân hàng]</span> Thông báo: Quý khách vừa đăng nhập thành công trên ứng dụng [Ngân hàng] SmartBanking lúc 08:15.
+          </div>
 
-            panel.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-6 space-y-4">
-                        <span class="inline-block text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-700 px-3 py-1 rounded-full">
-                            ${data.badge}
-                        </span>
-                        <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900">
-                            ${data.title}
-                        </h3>
-                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                            ${data.desc}
-                        </p>
-                        <div class="pt-2">
-                            <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-slate-900 mb-3">
-                                Kết quả đạt được sau giai đoạn này:
-                            </h4>
-                            <ul class="space-y-2.5">
-                                ${outcomesHtml}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-6">
-                        <div class="bg-brand-50/60 rounded-2xl p-5 border border-brand-100">
-                            <h4 class="font-heading font-bold text-sm text-brand-900 mb-4 flex items-center gap-2">
-                                <i class="fa-regular fa-calendar-check text-brand-700"></i>
-                                Lịch trình học chi tiết từng tuần
-                            </h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                ${weeksHtml}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // ==========================================
-        // 2. WEB SPEECH API & FLASHCARD FLIP
-        // ==========================================
-        function flipCard(cardId) {
-            const card = document.getElementById(cardId);
-            if (card) {
-                card.classList.toggle('flipped');
-            }
-        }
-
-        function speakSampleText(text) {
-            const statusBadge = document.getElementById('speech-status');
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9; // Tốc độ vừa phải cho người mới bắt đầu nghe rõ
-                
-                if (statusBadge) {
-                    statusBadge.innerHTML = `<i class="fa-solid fa-volume-high text-accent-500 animate-pulse mr-1"></i> Đang phát: "${text.split('.')[0]}"...`;
-                }
-
-                utterance.onend = () => {
-                    if (statusBadge) {
-                        statusBadge.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Đã phát âm xong`;
-                    }
-                };
-                window.speechSynthesis.speak(utterance);
-            } else {
-                if (statusBadge) {
-                    statusBadge.innerHTML = `<i class="fa-solid fa-circle-info text-amber-500 mr-1"></i> Trình duyệt chưa hỗ trợ phát giọng nói`;
-                }
-            }
-        }
-
-        // ==========================================
-        // 3. CHUYỂN ĐỔI TAB HỌC THỬ & BÀI TEST 3 CÂU
-        // ==========================================
-        function switchDemoTab(tab) {
-            const flashcardTab = document.getElementById('demo-tab-flashcard');
-            const quizTab = document.getElementById('demo-tab-quiz');
-            const btnFlashcard = document.getElementById('tab-btn-flashcard');
-            const btnQuiz = document.getElementById('tab-btn-quiz');
-
-            if (tab === 'flashcard') {
-                flashcardTab.classList.remove('hidden');
-                quizTab.classList.add('hidden');
-                btnFlashcard.className = "px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all bg-brand-800 text-white shadow";
-                btnQuiz.className = "px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
-            } else {
-                flashcardTab.classList.add('hidden');
-                quizTab.classList.remove('hidden');
-                btnQuiz.className = "px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all bg-brand-800 text-white shadow";
-                btnFlashcard.className = "px-5 py-3 rounded-xl font-heading font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
-                renderQuiz();
-            }
-        }
-
-        const quizQuestions = [
-            {
-                q: "Câu 1/3 (Phát âm): Từ 'Comfortable' (Thoải mái) có bao nhiêu âm tiết khi người bản xứ phát âm chuẩn?",
-                options: [
-                    "A. 4 âm tiết (Com - for - ta - ble)",
-                    "B. 3 âm tiết (KUM - fơ - bồ)",
-                    "C. 2 âm tiết (Com - bồ)"
-                ],
-                correct: 1,
-                explanation: "Chính xác! Người bản xứ lược âm ở giữa và chỉ đọc 3 âm tiết là /ˈkʌm.fə.tə.bəl/."
-            },
-            {
-                q: "Câu 2/3 (Phản xạ giao tiếp): Khi đồng nghiệp nước ngoài hỏi 'How’s it going?', câu trả lời tự nhiên nhất là gì?",
-                options: [
-                    "A. I am going to the office now.",
-                    "B. Pretty good, thanks! How about you?",
-                    "C. Yes, it is going."
-                ],
-                correct: 1,
-                explanation: "'How’s it going?' có nghĩa là 'Dạo này bạn thế nào?' (tương tự How are you?), không phải hỏi bạn đang đi đâu."
-            },
-            {
-                q: "Câu 3/3 (Từ vựng thực tế): Để nói 'Hôm nay tôi rất bận nhiều việc' một cách tự nhiên như người bản xứ, bạn dùng cụm nào?",
-                options: [
-                    "A. I have a lot on my plate today.",
-                    "B. Today my job is very big.",
-                    "C. I am busy many things today."
-                ],
-                correct: 0,
-                explanation: "Cụm 'have a lot on one’s plate' là cụm từ cực kỳ thông dụng trong giao tiếp để diễn tả đang có nhiều việc phải giải quyết."
-            }
-        ];
-
-        let currentQuizIndex = 0;
-        let quizScore = 0;
-
-        function renderQuiz() {
-            const container = document.getElementById('quiz-container');
-            if (currentQuizIndex >= quizQuestions.length) {
-                // Hiển thị kết quả
-                let recommendedPkg = "Gói Tiêu Chuẩn (Pro Giao Tiếp - 3.490.000đ)";
-                let levelComment = "Bạn đã có sự nhạy bén ban đầu nhưng cần hệ thống hóa lại 44 âm IPA và các cụm phản xạ thực tế để giao tiếp trôi chảy.";
-                if (quizScore === 3) {
-                    levelComment = "Tuyệt vời! Nền tảng của bạn khá tốt. Bạn rất phù hợp với Gói Pro Giao Tiếp hoặc Gói Kèm 1-1 VIP để bứt tốc phản xạ.";
-                } else if (quizScore <= 1) {
-                    levelComment = "Đừng lo lắng! 90% học viên mới bắt đầu đều nhầm các câu này. Lộ trình 90 ngày từ gốc sẽ giúp bạn nắm chắc từng bước.";
-                }
-
-                container.innerHTML = `
-                    <div class="text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                        <span class="text-xs font-bold uppercase text-brand-700 bg-brand-50 px-3 py-1 rounded-full">Kết quả bài test nhanh</span>
-                        <h3 class="font-heading font-extrabold text-2xl text-slate-900">
-                            Bạn trả lời đúng <span class="text-accent-600">${quizScore}/${quizQuestions.length}</span> câu!
-                        </h3>
-                        <p class="text-sm text-slate-600 max-w-lg mx-auto">${levelComment}</p>
-                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-                            <button onclick="selectPackageAndScroll('${recommendedPkg}')" class="w-full sm:w-auto bg-accent-500 hover:bg-accent-600 text-white font-heading font-bold text-sm px-6 py-3.5 rounded-xl shadow-glow transition">
-                                Nhận lộ trình phù hợp & Giảm 40% →
-                            </button>
-                            <button onclick="resetQuiz()" class="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-heading font-bold text-sm px-5 py-3.5 rounded-xl transition">
-                                Làm lại bài test
-                            </button>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
-
-            const item = quizQuestions[currentQuizIndex];
-            const optionsHtml = item.options.map((opt, idx) => `
-                <button onclick="answerQuiz(${idx})" class="w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:border-brand-600 hover:bg-brand-50/50 font-medium text-sm text-slate-800 transition flex items-center justify-between group">
-                    <span>${opt}</span>
-                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-brand-600"></i>
+          <!-- Trạng thái chờ kích hoạt tin nhắn đến -->
+          <div id="scamSmsPlaceholder" class="hidden my-auto py-8 text-center">
+            <div class="inline-flex flex-col items-center p-5 rounded-2xl bg-white border-2 border-dashed border-slate-300 shadow-sm max-w-xs">
+              <i class="fa-solid fa-bell-concierge text-3xl text-amber-500 mb-2"></i>
+              <p class="text-sm font-bold text-slate-800">Đang chờ tin nhắn lừa đảo đến...</p>
+              <p class="text-xs text-slate-500 mt-1 mb-3">Bấm nút bên dưới để phát tiếng "Ting!" và hiện tin nhắn ngay hoặc hẹn giờ 3 giây để diễn viên chuẩn bị.</p>
+              <div class="flex gap-2 w-full">
+                <button onclick="triggerScamSms()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl shadow">
+                  <i class="fa-solid fa-volume-high mr-1"></i> Nổ tin nhắn ngay
                 </button>
-            `).join('');
+                <button onclick="triggerDelayedAction(triggerScamSms, 3)" class="bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl shadow">
+                  <i class="fa-regular fa-clock mr-1"></i> Hẹn 3s
+                </button>
+              </div>
+            </div>
+          </div>
 
-            container.innerHTML = `
-                <div class="space-y-5">
-                    <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
-                        <span>Kiểm tra nhanh trình độ</span>
-                        <span>Tiến độ: ${currentQuizIndex + 1} / ${quizQuestions.length}</span>
-                    </div>
-                    <h4 class="font-heading font-bold text-lg sm:text-xl text-slate-900">${item.q}</h4>
-                    <div class="space-y-3">
-                        ${optionsHtml}
-                    </div>
+          <!-- TIN NHẮN LỪA ĐẢO CHÍNH TRONG KỊCH BẢN (Chữ to, độ tương phản cao cho B-roll) -->
+          <div id="scamSmsBubble" class="msg-enter max-w-[95%] self-start bg-white border-2 border-red-500 rounded-2xl rounded-tl-sm p-4 shadow-md relative">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="inline-flex items-center gap-1 text-xs font-extrabold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-md border border-red-200">
+                <i class="fa-solid fa-triangle-exclamation"></i> Cảnh báo khẩn
+              </span>
+              <span class="text-xs font-bold text-slate-400">Vừa xong</span>
+            </div>
+
+            <p class="text-[17px] font-bold text-slate-900 leading-relaxed">
+              <span class="font-black text-red-600">[Ngân hàng]</span> Tài khoản của bạn bị khóa do bất thường. Bấm vào link
+              <button onclick="goToFakeWebFromSms()" class="inline text-left font-black text-blue-600 underline decoration-2 underline-offset-4 hover:text-blue-800 active:scale-95 transition-transform bg-blue-50 px-1.5 py-0.5 rounded">
+                xacthuc-taikhoan.example
+              </button>
+              để xác thực trong <span class="text-red-600 font-black underline">15 phút</span>, nếu không sẽ bị đóng vĩnh viễn.
+            </p>
+
+            <!-- Thẻ preview link giả giúp ngón tay diễn viên An dễ bấm trúng khi quay cận cảnh -->
+            <div onclick="goToFakeWebFromSms()" class="mt-3 bg-blue-50/90 hover:bg-blue-100 active:bg-blue-200 border-2 border-blue-400 rounded-xl p-3 cursor-pointer transition flex items-center justify-between group">
+              <div class="min-w-0 pr-2">
+                <div class="text-[11px] font-extrabold text-blue-700 uppercase tracking-wide flex items-center gap-1">
+                  <i class="fa-solid fa-globe"></i> Liên kết xác thực tài khoản
                 </div>
-            `;
+                <div class="text-sm font-black text-blue-700 underline truncate mt-0.5">
+                  https://xacthuc-taikhoan.example
+                </div>
+                <div class="text-xs font-semibold text-slate-600 mt-0.5">
+                  Bấm vào đây để mở cổng xác thực [Ngân hàng]
+                </div>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow group-active:scale-90 transition">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nút kích hoạt nhanh dành cho lúc tập dượt (Tự ẩn khi ẩn thanh đạo cụ) -->
+          <div class="prop-helper-ui mt-auto pt-2 flex flex-wrap gap-2">
+            <button onclick="triggerScamSms()" class="flex-1 bg-indigo-600 active:bg-indigo-700 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl shadow flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-bell"></i> Kích hoạt tin nhắn đến (Ting!)
+            </button>
+            <button onclick="triggerDelayedAction(triggerScamSms, 3)" class="bg-amber-500 active:bg-amber-600 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl shadow flex items-center justify-center gap-1" title="Ẩn rồi đợi 3 giây tự kêu Ting!">
+              <i class="fa-solid fa-hourglass-half"></i> Hẹn 3s nổ
+            </button>
+          </div>
+        </div>
+
+        <!-- Thanh soạn tin nhắn giả ở đáy -->
+        <div class="bg-white border-t border-slate-200 px-3 py-2.5 flex items-center gap-2 text-slate-400">
+          <i class="fa-solid fa-circle-plus text-xl text-slate-400"></i>
+          <div class="flex-1 bg-slate-100 rounded-full px-4 py-2 text-xs font-semibold text-slate-400 border border-slate-200">
+            Không thể trả lời tin nhắn dịch vụ này
+          </div>
+          <i class="fa-solid fa-microphone text-lg"></i>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- MÀN HÌNH 2: CẢNH 3 CỦA AN - TRANG WEB GIẢ & NHẬP MÃ OTP         -->
+      <!-- ============================================================== -->
+      <section id="screen-2" class="hidden flex-1 flex flex-col bg-slate-50 h-full">
+        <!-- Thanh địa chỉ trình duyệt giả cảnh báo Không bảo mật -->
+        <div class="bg-slate-900 text-white px-3 py-2.5 border-b-2 border-red-500 shadow-md">
+          <div class="flex items-center gap-2 bg-slate-800 border border-red-500/80 rounded-xl px-3 py-2">
+            <span class="inline-flex items-center gap-1 text-red-400 font-black text-xs shrink-0">
+              <i class="fa-solid fa-triangle-exclamation"></i> Không bảo mật
+            </span>
+            <span class="text-slate-500 font-bold">|</span>
+            <span class="text-sm font-black text-white tracking-tight truncate">
+              xacthuc-taikhoan.example
+            </span>
+            <i class="fa-solid fa-rotate-right text-xs text-slate-400 ml-auto"></i>
+          </div>
+        </div>
+
+        <!-- Banner đếm ngược đỏ nhấp nháy báo hiệu khẩn cấp -->
+        <div class="bg-red-600 text-white px-4 py-2.5 flex items-center justify-between shadow-inner">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-exclamation text-lg animate-bounce"></i>
+            <span class="text-xs font-extrabold uppercase tracking-wide leading-tight">
+              Xác thực trong 15 phút trước khi khóa vĩnh viễn!
+            </span>
+          </div>
+          <span id="fakeWebTimer" class="bg-black/30 px-2.5 py-1 rounded-lg font-black text-base tabular-nums border border-white/30">
+            14:59
+          </span>
+        </div>
+
+        <!-- Nội dung chính của Trang Web Giả -->
+        <div class="flex-1 p-4 overflow-y-auto flex flex-col justify-between">
+          <div>
+            <!-- Logo & Header ngân hàng giả mạo -->
+            <div class="bg-white rounded-2xl p-4 border-2 border-slate-200 shadow-sm mb-4 text-center">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-orange-500 text-white flex items-center justify-center mx-auto mb-2 shadow-md text-xl font-black">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <h2 class="text-lg font-black text-slate-900 uppercase tracking-tight">
+                CỔNG XÁC THỰC [NGÂN HÀNG]
+              </h2>
+              <p class="text-xs font-bold text-red-600 mt-0.5">
+                ⚠️ Yêu cầu xác minh danh tính khẩn cấp để mở khóa tài khoản
+              </p>
+            </div>
+
+            <!-- BƯỚC 1: FORM ĐĂNG NHẬP GIẢ -->
+            <div id="fakeWebStep1" class="bg-white rounded-2xl p-4 border-2 border-slate-200 shadow-md space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                <span class="text-xs font-black uppercase text-slate-500">Bước 1/2: Thông tin đăng nhập</span>
+                <span class="text-[11px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
+                  Bắt buộc
+                </span>
+              </div>
+
+              <!-- Ô nhập Số tài khoản / Tên đăng nhập (Tự nhập tay) -->
+              <div>
+                <label for="fakeUsernameInput" class="block text-xs font-extrabold text-slate-700 uppercase mb-1.5">
+                  Số tài khoản / Tên đăng nhập
+                </label>
+                <div class="relative">
+                  <input
+                    id="fakeUsernameInput"
+                    type="text"
+                    autocomplete="off"
+                     autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="Nhập số tài khoản..."
+                    class="w-full pl-3.5 pr-10 py-3 text-base font-black text-slate-900 bg-slate-50 border-2 border-slate-300 rounded-xl focus:border-red-500 focus:bg-white focus:outline-none tracking-wider"
+                  />
+                  <i class="fa-solid fa-user text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+              </div>
+
+              <!-- Ô nhập Mật khẩu (Tự nhập tay + Nút ẩn/hiện mật khẩu) -->
+              <div>
+                <label for="fakePasswordInput" class="block text-xs font-extrabold text-slate-700 uppercase mb-1.5">
+                  Mật khẩu Internet Banking
+                </label>
+                <div class="relative">
+                  <input
+                    id="fakePasswordInput"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="Nhập mật khẩu..."
+                    class="w-full pl-3.5 pr-10 py-3 text-base font-black text-slate-900 bg-slate-50 border-2 border-slate-300 rounded-xl focus:border-red-500 focus:bg-white focus:outline-none tracking-wider"
+                  />
+                  <button
+                    type="button"
+                    onclick="toggleFakePasswordVisibility()"
+                    class="text-slate-400 hover:text-slate-600 absolute right-3 top-1/2 -translate-y-1/2 p-1"
+                    title="Ẩn/Hiện mật khẩu"
+                  >
+                    <i id="fakePasswordEyeIcon" class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Nút TIẾP TỤC XÁC THỰC -->
+              <button
+                type="button"
+                onclick="submitFakeLoginStep1()"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 active:scale-[0.98] text-white font-black text-base uppercase tracking-wider shadow-lg shadow-red-600/30 flex items-center justify-center gap-2 transition"
+              >
+                <span>TIẾP TỤC XÁC THỰC</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- BƯỚC 2: NHẬP MÃ OTP GIẢ (Tự nhập bằng bàn phím) -->
+            <div id="fakeWebStep2" class="hidden bg-white rounded-2xl p-4 border-2 border-red-400 shadow-md space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                <span class="text-xs font-black uppercase text-red-600">Bước 2/2: Nhập mã xác thực OTP</span>
+                <button
+                  type="button"
+                  onclick="resetFakeWeb()"
+                  class="text-[11px] font-bold text-slate-500 hover:text-slate-800 underline"
+                >
+                  Quay lại
+                </button>
+              </div>
+
+              <!-- Thông báo tin nhắn OTP gửi về để diễn viên nhìn và tự gõ -->
+              <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-left">
+                <div class="flex items-center justify-between text-[11px] font-extrabold text-amber-800 uppercase mb-1">
+                  <span><i class="fa-solid fa-comment-sms mr-1"></i>Tin nhắn SMS vừa đến</span>
+                  <span>Bây giờ</span>
+                </div>
+                <p class="text-xs font-bold text-slate-800 leading-snug">
+                  [Ngân hàng]: Mã OTP xác thực giao dịch của quý khách là <span class="text-red-600 font-black text-sm underline">123456</span>.
+                </p>
+              </div>
+
+              <!-- Ô nhập 6 số OTP to rõ cho máy quay (Tự gõ bàn phím) -->
+              <div>
+                <label for="fakeOtpInput" class="block text-center text-xs font-extrabold text-slate-600 uppercase mb-2">
+                  NHẬP MÃ OTP
+                </label>
+                <input
+                  id="fakeOtpInput"
+                  type="text"
+                  maxlength="6"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  placeholder="Nhập 6 số OTP..."
+                  class="w-full py-3.5 px-4 text-center text-2xl font-black tracking-[0.35em] text-red-600 bg-slate-50 border-2 border-red-500 rounded-xl focus:outline-none focus:ring-4 focus:ring-red-200 placeholder:text-sm placeholder:tracking-normal placeholder:font-semibold placeholder:text-slate-400"
+                />
+              </div>
+
+              <!-- Bàn phím số ảo tùy chọn nếu diễn viên muốn bấm trực tiếp trên màn hình -->
+              <div class="grid grid-cols-3 gap-1.5 pt-1">
+                <button type="button" onclick="appendOtpDigit('1')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">1</button>
+                <button type="button" onclick="appendOtpDigit('2')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">2</button>
+                <button type="button" onclick="appendOtpDigit('3')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">3</button>
+                <button type="button" onclick="appendOtpDigit('4')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">4</button>
+                <button type="button" onclick="appendOtpDigit('5')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">5</button>
+                <button type="button" onclick="appendOtpDigit('6')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">6</button>
+                <button type="button" onclick="appendOtpDigit('7')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">7</button>
+                <button type="button" onclick="appendOtpDigit('8')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">8</button>
+                <button type="button" onclick="appendOtpDigit('9')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">9</button>
+                <button type="button" onclick="clearOtpDigits()" class="py-2 bg-slate-200 active:bg-slate-300 rounded-xl font-bold text-xs text-slate-700">Xóa hết</button>
+                <button type="button" onclick="appendOtpDigit('0')" class="py-2 bg-slate-100 active:bg-slate-300 rounded-xl font-black text-base text-slate-800">0</button>
+                <button type="button" onclick="backspaceOtpDigit()" class="py-2 bg-slate-200 active:bg-slate-300 rounded-xl font-bold text-base text-slate-700">
+                  <i class="fa-solid fa-delete-left"></i>
+                </button>
+              </div>
+
+              <button
+                type="button"
+                onclick="completeFakeOtpStep2()"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 active:scale-[0.98] text-white font-black text-base uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition"
+              >
+                <i class="fa-solid fa-check-double"></i>
+                <span>XÁC NHẬN HOÀN TẤT</span>
+              </button>
+            </div>
+
+            <!-- BƯỚC 3: ĐANG XỬ LÝ GIẢ MẠO (Sau khi An bấm xác nhận OTP) -->
+            <div id="fakeWebStep3" class="hidden bg-white rounded-2xl p-6 border-2 border-red-500 shadow-lg text-center space-y-4">
+              <div class="w-16 h-16 rounded-full border-4 border-red-600 border-t-transparent animate-spin mx-auto"></div>
+              <h3 class="text-lg font-black text-slate-900">ĐANG ĐỒNG BỘ XÁC THỰC...</h3>
+              <p class="text-sm font-bold text-red-600 bg-red-50 p-3 rounded-xl border border-red-200">
+                Hệ thống đang xử lý phiên đăng nhập. Vui lòng không tắt trình duyệt!
+              </p>
+              <button onclick="resetFakeWeb()" class="text-xs font-bold text-slate-500 underline pt-2">
+                Quay lại Bước 1 (Quay lại cảnh)
+              </button>
+            </div>
+          </div>
+
+          <p class="text-center text-[11px] font-semibold text-slate-400 mt-4">
+            © Cổng xác thực tự động • xacthuc-taikhoan.example
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- MÀN HÌNH 3: CẢNH 3 CỦA BÌNH - APP [NGÂN HÀNG] CHÍNH THỨC        -->
+      <!-- ============================================================== -->
+      <section id="screen-3" class="hidden flex-1 flex flex-col bg-slate-50 h-full">
+        <!-- Header xanh tin cậy của App chính thức -->
+        <div class="bg-gradient-to-br from-emerald-700 via-teal-700 to-cyan-800 text-white p-4 pb-6 rounded-b-3xl shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center border border-white/30 text-emerald-300 text-xl">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black tracking-wide uppercase flex items-center gap-1">
+                  [Ngân hàng] SmartBanking
+                  <i class="fa-solid fa-circle-check text-emerald-300 text-xs"></i>
+                </div>
+                <div class="text-[11px] text-emerald-100 font-medium">Ứng dụng chính thức • Bảo mật 2 lớp</div>
+              </div>
+            </div>
+            <div class="px-2.5 py-1 rounded-full bg-emerald-500/30 border border-emerald-300/40 text-[11px] font-extrabold flex items-center gap-1">
+              <i class="fa-solid fa-lock text-[10px]"></i> An toàn
+            </div>
+          </div>
+
+          <!-- Thẻ thông tin tài khoản của Bình -->
+          <div class="bg-white text-slate-900 rounded-2xl p-4 shadow-xl border-2 border-emerald-400">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-2.5">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Chủ tài khoản (Chạm để sửa)</span>
+                <div contenteditable="true" spellcheck="false" class="text-base font-black text-slate-900 uppercase tracking-tight focus:outline-none focus:bg-yellow-50 rounded px-0.5">
+                  NGUYỄN VĂN BÌNH
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Số tài khoản</span>
+                <span class="text-sm font-black text-teal-700 tracking-wider">0123 456 789</span>
+              </div>
+            </div>
+
+            <!-- Huy hiệu trạng thái hoạt động bình thường -->
+            <div class="bg-emerald-50 border-2 border-emerald-500 rounded-xl p-2.5 mb-3 flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 text-base">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="text-xs font-black text-emerald-900 leading-snug">
+                ✅ ĐANG HOẠT ĐỘNG BÌNH THƯỜNG
+                <span class="block text-[11px] font-bold text-emerald-700">(Không có cảnh báo khóa)</span>
+              </div>
+            </div>
+
+            <!-- Số dư khả dụng -->
+            <div class="flex items-baseline justify-between bg-slate-50 px-3.5 py-2.5 rounded-xl border border-slate-200">
+              <span class="text-xs font-extrabold text-slate-600 uppercase">Số dư khả dụng:</span>
+              <span class="text-2xl font-black text-emerald-700 tracking-tight">5.000.000 đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phần thân App: Cảnh báo an toàn & Nút gọi Hotline -->
+        <div class="flex-1 p-4 space-y-3.5 overflow-y-auto">
+          <!-- Banner nhắc nhở an toàn nổi bật -->
+          <div class="bg-amber-50 border-2 border-amber-400 rounded-2xl p-3.5 shadow-sm">
+            <div class="flex items-start gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 text-base mt-0.5">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <div>
+                <h3 class="text-xs font-black uppercase text-amber-900 tracking-wide">
+                  Khuyến cáo an ninh mạng
+                </h3>
+                <p class="text-sm font-extrabold text-slate-900 mt-1 leading-snug">
+                  <span class="text-red-600 font-black">[Ngân hàng] KHÔNG BAO GIỜ</span> yêu cầu nhập mật khẩu và mã OTP qua đường link tin nhắn.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lưới tính năng ngân hàng -->
+          <div class="grid grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-money-bill-transfer text-teal-600 text-lg mb-1"></i>
+              <div class="text-xs font-bold text-slate-700">Chuyển tiền</div>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-qrcode text-teal-600 text-lg mb-1"></i>
+              <div class="text-xs font-bold text-slate-700">Quét mã QR</div>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-credit-card text-teal-600 text-lg mb-1"></i>
+              <div class="text-xs font-bold text-slate-700">Quản lý thẻ</div>
+            </div>
+          </div>
+
+          <!-- Nút gọi Hotline chính thức in ở mặt sau thẻ -->
+          <div class="bg-white rounded-2xl p-3.5 border-2 border-teal-600 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-teal-800 uppercase">Tổng đài CSKH 24/7 (Trên mặt sau thẻ)</div>
+                <div class="text-lg font-black text-slate-900">1900 0000 <span class="text-xs font-bold text-emerald-600">(Chính thức)</span></div>
+              </div>
+              <button onclick="toggleHotlineCallModal(true)" class="bg-teal-600 active:bg-teal-700 text-white font-black text-xs px-4 py-3 rounded-xl shadow flex items-center gap-1.5">
+                <i class="fa-solid fa-phone-volume"></i> Gọi kiểm tra
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Giao diện giả lập đang gọi Hotline khi Bình bấm nút Gọi -->
+        <div id="hotlineCallModal" class="hidden absolute inset-0 bg-slate-900/95 backdrop-blur-md text-white z-40 flex flex-col items-center justify-between py-12 px-6 text-center">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-400/30">
+              Cuộc gọi xác minh an toàn
+            </span>
+            <h3 class="text-2xl font-black mt-4">Hotline [Ngân hàng]</h3>
+            <p class="text-lg font-extrabold text-emerald-400 mt-1">1900 0000</p>
+            <p class="text-sm text-slate-300 mt-2">Đang kết nối tổng đài viên... (00:08)</p>
+          </div>
+          <div class="w-24 h-24 rounded-full bg-emerald-600/30 border-2 border-emerald-400 flex items-center justify-center text-4xl text-emerald-300 animate-pulse">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <button onclick="toggleHotlineCallModal(false)" class="w-16 h-16 rounded-full bg-red-600 text-white text-2xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-phone-slash"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- MÀN HÌNH 4: CẢNH 4 CỦA AN - 24 GIỜ SAU (-5.000.000đ)           -->
+      <!-- ============================================================== -->
+      <section id="screen-4" class="hidden flex-1 flex flex-col bg-slate-950 text-white h-full relative">
+        <!-- Nền cảnh báo đỏ tối phục vụ quay cận cảnh -->
+        <div class="p-4 flex-1 flex flex-col justify-between overflow-y-auto">
+          <!-- Đồng hồ màn hình khóa / 24 giờ sau -->
+          <div class="text-center pt-2 pb-3 border-b border-slate-800">
+            <span class="inline-block px-3 py-0.5 rounded-full bg-red-950 text-red-300 border border-red-700 text-[11px] font-black uppercase tracking-widest mb-1">
+              24 GIỜ SAU
+            </span>
+            <div class="text-4xl font-black tracking-tight text-white">09:42</div>
+            <div class="text-xs font-semibold text-slate-400">Thông báo khẩn cấp từ hệ thống</div>
+          </div>
+
+          <!-- CARD THÔNG BÁO BIẾN ĐỘNG SỐ DƯ CỰC TO, ĐỘ TƯƠNG PHẢN CAO -->
+          <div id="deductionAlertCard" class="my-auto bg-white text-slate-900 rounded-3xl p-5 border-4 border-red-600 shadow-[0_0_50px_rgba(220,38,38,0.65)] space-y-4">
+            <!-- Tiêu đề cảnh báo -->
+            <div class="flex items-center justify-between border-b-2 border-red-100 pb-3">
+              <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                  <h2 class="text-sm font-black uppercase text-red-600 tracking-tight">
+                    ⚠️ BIẾN ĐỘNG SỐ DƯ - [Ngân hàng]
+                  </h2>
+                  <p class="text-xs font-bold text-slate-500">Vừa xong • Giao dịch trực tuyến</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SỐ TIỀN BỊ TRỪ CỰC LỚN ĐỂ LÊN HÌNH RÕ NÉT -->
+            <div class="bg-red-50 border-2 border-red-500 rounded-2xl p-4 text-center">
+              <span class="text-xs font-black uppercase text-red-700 tracking-wider block mb-1">
+                Số tiền giao dịch
+              </span>
+              <div class="text-4xl sm:text-[42px] font-black text-red-600 tracking-tight leading-none py-1">
+                -5.000.000đ
+              </div>
+            </div>
+
+            <!-- Chi tiết Tài khoản & Số dư cuối 0đ -->
+            <div class="space-y-2.5 text-sm bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-500">Tài khoản:</span>
+                <span class="font-black text-slate-900 text-base">0123xxx999</span>
+              </div>
+              <div class="flex items-center justify-between border-t border-slate-200 pt-2">
+                <span class="font-bold text-slate-500">Số dư cuối:</span>
+                <span class="font-black text-red-600 text-xl bg-red-100 px-2.5 py-0.5 rounded-lg border border-red-300">
+                  0đ
+                </span>
+              </div>
+              <div class="border-t border-slate-200 pt-2">
+                <span class="font-bold text-slate-500 block text-xs uppercase mb-1">Nội dung giao dịch:</span>
+                <div class="font-black text-slate-900 text-sm bg-amber-100/80 border border-amber-300 px-2.5 py-1.5 rounded-lg tracking-wide">
+                  CHUYEN TIEN QUA LIEN KET XAC THUC
+                </div>
+              </div>
+            </div>
+
+            <!-- Cảnh báo đăng nhập thiết bị lạ -->
+            <div class="text-xs font-bold text-red-700 bg-red-100/80 px-3 py-2 rounded-xl flex items-center gap-2">
+              <i class="fa-solid fa-user-secret text-base"></i>
+              <span>Thực hiện bởi thiết bị lạ sau khi xác thực OTP.</span>
+            </div>
+          </div>
+
+          <!-- Nút kích hoạt thông báo trừ tiền kèm rung và còi báo (Tự ẩn khi ẩn thanh đạo cụ) -->
+          <div class="prop-helper-ui pt-3 flex gap-2">
+            <button onclick="triggerBalanceDeductionAlert()" class="flex-1 bg-red-600 active:bg-red-700 text-white font-black text-xs py-3 px-3 rounded-xl shadow-lg flex items-center justify-center gap-1.5 border border-red-400">
+              <i class="fa-solid fa-bolt"></i> Kích hoạt thông báo trừ tiền (Ting!)
+            </button>
+            <button onclick="triggerDelayedAction(triggerBalanceDeductionAlert, 3)" class="bg-amber-500 active:bg-amber-600 text-slate-950 font-black text-xs py-3 px-3 rounded-xl shadow-lg flex items-center justify-center gap-1">
+              <i class="fa-solid fa-clock"></i> Hẹn 3s
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- MÀN HÌNH 5: CẢNH 4 CỦA BÌNH - CHẶN SỐ LẠ & BÁO CÁO TIN RÁC      -->
+      <!-- ============================================================== -->
+      <section id="screen-5" class="hidden flex-1 flex flex-col bg-slate-100 h-full relative">
+        <!-- Header chi tiết người gửi -->
+        <div class="bg-white border-b border-slate-200 p-4 text-center shadow-sm">
+          <div class="w-14 h-14 rounded-full bg-red-100 text-red-600 border-2 border-red-300 flex items-center justify-center mx-auto mb-2 text-2xl font-black">
+            <i class="fa-solid fa-user-slash"></i>
+          </div>
+          <h2 class="text-base font-black text-slate-900">
+            [Ngân hàng] <span class="text-red-600">(Số lạ: +84 999 xxx 000)</span>
+          </h2>
+          <p class="text-xs font-bold text-amber-700 bg-amber-100 inline-block px-2.5 py-0.5 rounded-full mt-1 border border-amber-300">
+            ⚠️ Số điện thoại không thuộc danh bạ chính thức
+          </p>
+        </div>
+
+        <div class="flex-1 p-4 space-y-4 overflow-y-auto flex flex-col justify-between">
+          <!-- Nội dung tin nhắn lừa đảo trích dẫn -->
+          <div class="bg-white p-3.5 rounded-2xl border-2 border-slate-300 shadow-sm">
+            <div class="text-[11px] font-extrabold uppercase text-slate-400 mb-1">Nội dung tin nhắn nghi vấn:</div>
+            <p class="text-sm font-bold text-slate-800 leading-snug">
+              "[Ngân hàng] Tài khoản của bạn bị khóa do bất thường. Bấm vào link <span class="text-blue-600 underline">xacthuc-taikhoan.example</span> để xác thực trong 15 phút, nếu không sẽ bị đóng vĩnh viễn."
+            </p>
+          </div>
+
+          <!-- TRẠNG THÁI 1: 2 NÚT HÀNH ĐỘNG LỚN ĐỂ QUAY CẬN CẢNH NGÓN TAY BÌNH -->
+          <div id="blockReportActions" class="space-y-3 my-auto">
+            <div class="text-xs font-extrabold uppercase text-slate-500 text-center tracking-wider">
+              Chọn thao tác xử lý an toàn
+            </div>
+
+            <!-- Nút 1: Chặn người gửi này -->
+            <button
+              onclick="openBlockConfirmModal('block')"
+              class="w-full py-4 px-4 bg-white hover:bg-red-50 active:scale-[0.98] text-red-600 border-2 border-red-500 rounded-2xl font-black text-base shadow-md flex items-center justify-between transition"
+            >
+              <span class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-lg">🚫</span>
+                <span>Chặn người gửi này</span>
+              </span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Nút 2: Báo cáo tin nhắn rác / Lừa đảo -->
+            <button
+              onclick="openBlockConfirmModal('report')"
+              class="w-full py-4 px-4 bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white rounded-2xl font-black text-base shadow-lg flex items-center justify-between transition"
+            >
+              <span class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center text-lg">🚩</span>
+                <span>Báo cáo tin nhắn rác / Lừa đảo</span>
+              </span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- TRẠNG THÁI 2: ĐÃ CHẶN & BÁO CÁO THÀNH CÔNG -->
+          <div id="blockReportSuccess" class="hidden my-auto bg-emerald-50 border-3 border-emerald-500 rounded-3xl p-5 text-center shadow-lg space-y-3">
+            <div class="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center text-3xl mx-auto shadow-md">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-lg font-black text-emerald-950 leading-snug">
+              ✅ Đã chặn số & Gửi báo cáo tin nhắn rác thành công
+            </h3>
+            <p class="text-xs font-bold text-emerald-800 leading-relaxed">
+              Số lạ <span class="underline">+84 999 xxx 000</span> đã bị đưa vào danh sách chặn và gửi cảnh báo lừa đảo đến hệ thống chống tin nhắn rác.
+            </p>
+            <button onclick="resetScreen5()" class="text-xs font-extrabold text-emerald-700 underline pt-1">
+              Hoàn tác để quay lại cảnh bấm nút
+            </button>
+          </div>
+
+          <!-- Căn cứ pháp luật hiển thị gọn phía dưới hỗ trợ Cảnh 5 -->
+          <div class="bg-blue-950 text-white p-3.5 rounded-2xl border border-blue-700 text-xs space-y-1">
+            <div class="font-black text-amber-400 uppercase flex items-center gap-1.5">
+              <i class="fa-solid fa-scale-balanced"></i> Căn cứ pháp luật (Cảnh 5)
+            </div>
+            <p class="font-semibold text-blue-100 leading-snug">
+              • <strong class="text-white">Luật An ninh mạng 2025</strong> có hiệu lực từ ngày <strong class="text-amber-300">01/07/2026</strong>.
+            </p>
+            <p class="font-semibold text-blue-100 leading-snug">
+              • Hành vi lừa đảo có thể bị xử lý hình sự theo <strong class="text-amber-300">Điều 174 Bộ luật Hình sự</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hộp thoại xác nhận Chặn & Báo cáo -->
+        <div id="confirmBlockModal" class="hidden absolute inset-0 bg-slate-950/75 backdrop-blur-sm z-40 flex items-center justify-center p-5">
+          <div class="bg-white rounded-3xl p-5 w-full max-w-sm border-2 border-slate-200 shadow-2xl space-y-4 text-center msg-enter">
+            <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mx-auto text-2xl">
+              <i class="fa-solid fa-shield-virus"></i>
+            </div>
+            <h3 class="text-lg font-black text-slate-900">
+              Xác nhận chặn & báo cáo lừa đảo?
+            </h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Chặn vĩnh viễn số <span class="text-slate-900 font-black">+84 999 xxx 000</span> và gửi nội dung tin nhắn giả mạo <span class="text-red-600 font-black">[Ngân hàng]</span> tới hệ thống tiếp nhận tin rác.
+            </p>
+            <div class="flex gap-2.5 pt-1">
+              <button onclick="closeBlockConfirmModal()" class="flex-1 py-3 rounded-xl bg-slate-100 font-extrabold text-xs text-slate-700">
+                Hủy
+              </button>
+              <button onclick="confirmBlockAndReport()" class="flex-1 py-3 rounded-xl bg-red-600 text-white font-black text-xs shadow-md">
+                Xác nhận ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- THANH ĐIỀU KHIỂN ĐẠO CỤ (PROP SWITCHER)                         -->
+    <!-- ============================================================== -->
+    <nav id="propControlBar" class="bg-slate-900/95 backdrop-blur-md text-white border-t border-slate-700 px-2.5 py-2 z-50 transition-all duration-200">
+      <!-- Dòng 1: Các nút công cụ nhanh (Ting, Đồng hồ 15:00, Reset, Ẩn thanh đạo cụ) -->
+      <div class="flex items-center justify-between gap-1.5 mb-2">
+        <button
+          onclick="playTingAndShake()"
+          class="bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-black text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow"
+        >
+          <i class="fa-solid fa-volume-high"></i> Phát "Ting!"
+        </button>
+
+        <button
+          id="toggleTimerBtn"
+          onclick="toggleCountdownWidget()"
+          class="bg-red-600/90 hover:bg-red-600 text-white font-bold text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-red-400/40"
+        >
+          <i class="fa-solid fa-stopwatch"></i> 15:00: Bật
+        </button>
+
+        <button
+          onclick="resetCurrentScreen()"
+          title="Đặt lại màn hình hiện tại để quay đúp mới"
+          class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-slate-600"
+        >
+          <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+
+        <button
+          onclick="togglePropBar()"
+          class="bg-slate-700 hover:bg-slate-600 text-amber-300 font-extrabold text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-amber-400/40 ml-auto"
+        >
+          <i class="fa-solid fa-eye-slash"></i> Ẩn thanh
+        </button>
+      </div>
+
+      <!-- Dòng 2: 5 nút chuyển nhanh qua 5 màn hình theo kịch bản -->
+      <div class="grid grid-cols-5 gap-1">
+        <button onclick="switchScreen(1)" id="tab-btn-1" class="prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center">
+          <span class="text-[11px] font-black">1. SMS</span>
+          <span class="text-[9px] opacity-80 truncate w-full">Cảnh 2</span>
+        </button>
+        <button onclick="switchScreen(2)" id="tab-btn-2" class="prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center">
+          <span class="text-[11px] font-black">2. Web Giả</span>
+          <span class="text-[9px] opacity-80 truncate w-full">Cảnh 3 An</span>
+        </button>
+        <button onclick="switchScreen(3)" id="tab-btn-3" class="prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center">
+          <span class="text-[11px] font-black">3. App Thật</span>
+          <span class="text-[9px] opacity-80 truncate w-full">Cảnh 3 Bình</span>
+        </button>
+        <button onclick="switchScreen(4)" id="tab-btn-4" class="prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center">
+          <span class="text-[11px] font-black">4. -5 Triệu</span>
+          <span class="text-[9px] opacity-80 truncate w-full">Cảnh 4 An</span>
+        </button>
+        <button onclick="switchScreen(5)" id="tab-btn-5" class="prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center">
+          <span class="text-[11px] font-black">5. Chặn Số</span>
+          <span class="text-[9px] opacity-80 truncate w-full">Cảnh 4 Bình</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- NÚT CHẤM NHỎ MỜ Ở GÓC DƯỚI BÊN PHẢI KHI ẨN THANH ĐẠO CỤ (Không bị lộ khi quay B-roll) -->
+    <button
+      id="hiddenPropDot"
+      onclick="togglePropBar()"
+      title="Hiện lại thanh điều khiển đạo cụ"
+      class="hidden absolute bottom-2 right-2 z-50 w-7 h-7 rounded-full bg-slate-900/20 hover:bg-slate-900/80 text-white/40 hover:text-white flex items-center justify-center text-[10px] border border-white/20 transition"
+    >
+      <i class="fa-solid fa-sliders"></i>
+    </button>
+
+    <!-- Thanh Home Indicator giả lập ở đáy điện thoại -->
+    <div class="bg-transparent py-1.5 flex justify-center pointer-events-none">
+      <div class="w-32 h-1 bg-slate-400/50 rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- JAVASCRIPT XỬ LÝ ÂM THANH WEB AUDIO API & LOGIC ĐẠO CỤ          -->
+  <!-- ============================================================== -->
+  <script>
+    // Trạng thái toàn cục
+    let currentScreen = 1;
+    let propBarVisible = true;
+    let countdownVisible = true;
+    let countdownSeconds = 15 * 60; // 15 phút = 900 giây
+    let countdownInterval = null;
+    let bannerTimeout = null;
+    let audioCtx = null;
+
+    // Khởi tạo Web Audio API để tạo âm thanh "Ting!" và âm báo khẩn cấp không cần file ngoài
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Phát tiếng "Ting!" thông báo tin nhắn SMS điện thoại chân thực
+    function playSmsTingSound() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        // Nốt 1 (C6)
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(1046.5, now);
+        gain1.gain.setValueAtTime(0.001, now);
+        gain1.gain.exponentialRampToValueAtTime(0.35, now + 0.015);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.26);
+
+        // Nốt 2 cao và ngân (G6 - Tạo tiếng "Ting!" trong trẻo)
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(1567.98, now + 0.11);
+        gain2.gain.setValueAtTime(0.001, now + 0.11);
+        gain2.gain.exponentialRampToValueAtTime(0.45, now + 0.13);
+        gain2.gain.exponentialRampToValueAtTime(0.0008, now + 0.85);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now + 0.11);
+        osc2.stop(now + 0.86);
+      } catch (e) {
+        console.warn('Web Audio API error:', e);
+      }
+    }
+
+    // Phát âm thanh cảnh báo khẩn cấp khi bị trừ -5.000.000đ
+    function playUrgentAlertSound() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        [0, 0.18, 0.36].forEach((offset, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(idx === 2 ? 880 : 660, now + offset);
+          gain.gain.setValueAtTime(0.01, now + offset);
+          gain.gain.exponentialRampToValueAtTime(0.3, now + offset + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 0.15);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + offset);
+          osc.stop(now + offset + 0.16);
+        });
+      } catch (e) {
+        console.warn('Audio error:', e);
+      }
+    }
+
+    // Hiệu ứng rung màn hình + rung vật lý trên điện thoại Android (nếu hỗ trợ)
+    function triggerScreenShake(heavy = false) {
+      const frame = document.getElementById('phoneFrame');
+      const cls = heavy ? 'animate-heavy-shake' : 'animate-shake';
+      frame.classList.remove('animate-shake', 'animate-heavy-shake');
+      void frame.offsetWidth; // Reflow
+      frame.classList.add(cls);
+
+      if (navigator.vibrate) {
+        navigator.vibrate(heavy ? [200, 80, 250, 80, 300] : [120, 60, 150]);
+      }
+
+      setTimeout(() => {
+        frame.classList.remove(cls);
+      }, 800);
+    }
+
+    // Nút phát tiếng "Ting!" chung trên thanh công cụ
+    function playTingAndShake() {
+      playSmsTingSound();
+      triggerScreenShake(false);
+    }
+
+    // Hẹn giờ 3 giây để diễn viên đặt máy xuống bàn trước khi thông báo tự nổ
+    function triggerDelayedAction(callback, seconds = 3) {
+      const badge = document.getElementById('timerDelayBadge');
+      let remaining = seconds;
+      badge.textContent = `${remaining}s...`;
+      badge.classList.remove('hidden');
+
+      const timer = setInterval(() => {
+        remaining--;
+        if (remaining > 0) {
+          badge.textContent = `${remaining}s...`;
+        } else {
+          clearInterval(timer);
+          badge.classList.add('hidden');
+          callback();
         }
+      }, 1000);
+    }
 
-        function answerQuiz(selectedIndex) {
-            const item = quizQuestions[currentQuizIndex];
-            if (selectedIndex === item.correct) {
-                quizScore++;
-            }
-            currentQuizIndex++;
-            renderQuiz();
+    // Hiển thị Banner thông báo trượt từ đỉnh màn hình xuống
+    let currentBannerAction = null;
+    function showTopPushBanner({ sender, body, hint, iconClass = 'fa-comment-sms', bgClass = 'bg-blue-600', onClick = null }) {
+      const banner = document.getElementById('pushNotificationBanner');
+      const iconBox = document.getElementById('pushIconBox');
+      document.getElementById('pushSender').textContent = sender;
+      document.getElementById('pushBody').textContent = body;
+      document.getElementById('pushHint').textContent = hint || 'Chạm để xem chi tiết';
+      iconBox.className = `w-10 h-10 rounded-xl ${bgClass} flex items-center justify-center shrink-0 text-lg text-white`;
+      iconBox.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+
+      currentBannerAction = onClick;
+      banner.classList.remove('hidden', 'banner-enter');
+      void banner.offsetWidth;
+      banner.classList.add('banner-enter');
+
+      if (bannerTimeout) clearTimeout(bannerTimeout);
+      bannerTimeout = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 6500);
+    }
+
+    function handleBannerClick() {
+      const banner = document.getElementById('pushNotificationBanner');
+      banner.classList.add('hidden');
+      if (typeof currentBannerAction === 'function') {
+        currentBannerAction();
+      }
+    }
+
+    // Đồng hồ đếm ngược 15:00
+    function startCountdownTimer() {
+      if (countdownInterval) clearInterval(countdownInterval);
+      countdownInterval = setInterval(() => {
+        if (countdownSeconds > 0) {
+          countdownSeconds--;
+        } else {
+          countdownSeconds = 15 * 60;
         }
+        updateCountdownDisplay();
+      }, 1000);
+    }
 
-        function resetQuiz() {
-            currentQuizIndex = 0;
-            quizScore = 0;
-            renderQuiz();
+    function updateCountdownDisplay() {
+      const mins = String(Math.floor(countdownSeconds / 60)).padStart(2, '0');
+      const secs = String(countdownSeconds % 60).padStart(2, '0');
+      const formatted = `${mins}:${secs}`;
+      const globalEl = document.getElementById('globalCountdownText');
+      const fakeWebEl = document.getElementById('fakeWebTimer');
+      if (globalEl) globalEl.textContent = formatted;
+      if (fakeWebEl) fakeWebEl.textContent = formatted;
+    }
+
+    function toggleCountdownWidget() {
+      countdownVisible = !countdownVisible;
+      const widget = document.getElementById('globalCountdownWidget');
+      const btn = document.getElementById('toggleTimerBtn');
+      if (countdownVisible) {
+        widget.classList.remove('hidden');
+        btn.innerHTML = '<i class="fa-solid fa-stopwatch"></i> 15:00: Bật';
+        btn.className = 'bg-red-600/90 hover:bg-red-600 text-white font-bold text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-red-400/40';
+      } else {
+        widget.classList.add('hidden');
+        btn.innerHTML = '<i class="fa-solid fa-stopwatch"></i> 15:00: Tắt';
+        btn.className = 'bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-[11px] px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-slate-600';
+      }
+    }
+
+    // Ẩn / Hiện thanh điều khiển đạo cụ (Prop Switcher)
+    function togglePropBar() {
+      propBarVisible = !propBarVisible;
+      const bar = document.getElementById('propControlBar');
+      const dot = document.getElementById('hiddenPropDot');
+      const helpers = document.querySelectorAll('.prop-helper-ui');
+
+      if (propBarVisible) {
+        bar.classList.remove('hidden');
+        dot.classList.add('hidden');
+        helpers.forEach(el => el.classList.remove('hidden'));
+      } else {
+        bar.classList.add('hidden');
+        dot.classList.remove('hidden');
+        helpers.forEach(el => el.classList.add('hidden'));
+      }
+    }
+
+    // Chuyển đổi qua lại giữa 5 màn hình
+    function switchScreen(screenNumber) {
+      currentScreen = screenNumber;
+      for (let i = 1; i <= 5; i++) {
+        const sec = document.getElementById(`screen-${i}`);
+        const btn = document.getElementById(`tab-btn-${i}`);
+        if (i === screenNumber) {
+          sec.classList.remove('hidden');
+          btn.className = 'prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center bg-blue-600 text-white border-blue-400 shadow';
+        } else {
+          sec.classList.add('hidden');
+          btn.className = 'prop-tab-btn py-1.5 px-1 rounded-lg text-center border transition flex flex-col items-center justify-center bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700';
         }
+      }
 
-        // ==========================================
-        // 4. CHỌN GÓI HỌC & CUỘN XUỐNG FORM ĐĂNG KÝ
-        // ==========================================
-        function selectPackageAndScroll(pkgName) {
-            const selectEl = document.getElementById('package');
-            if (selectEl) {
-                selectEl.value = pkgName;
-            }
-            const formSection = document.getElementById('dang-ky');
-            if (formSection) {
-                formSection.scrollIntoView({ behavior: 'smooth' });
-            }
-            // Hiệu ứng nháy sáng nhẹ ở khung Form
-            const formCard = document.getElementById('form-card');
-            if (formCard) {
-                formCard.classList.add('ring-4', 'ring-accent-500');
-                setTimeout(() => {
-                    formCard.classList.remove('ring-4', 'ring-accent-500');
-                }, 1800);
-            }
-        }
+      // Đổi màu thanh trạng thái trên cùng cho hợp với từng màn hình
+      const statusBar = document.getElementById('statusBar');
+      if (screenNumber === 2 || screenNumber === 4) {
+        statusBar.className = 'w-full px-5 pt-2.5 pb-2 flex items-center justify-between text-xs font-bold z-40 select-none transition-colors duration-300 bg-slate-900 text-white';
+      } else if (screenNumber === 3) {
+        statusBar.className = 'w-full px-5 pt-2.5 pb-2 flex items-center justify-between text-xs font-bold z-40 select-none transition-colors duration-300 bg-emerald-700 text-white';
+      } else {
+        statusBar.className = 'w-full px-5 pt-2.5 pb-2 flex items-center justify-between text-xs font-bold z-40 select-none transition-colors duration-300 bg-white text-slate-900';
+      }
 
-        // ==========================================
-        // 5. FAQ ACCORDION
-        // ==========================================
-        function toggleFaq(index) {
-            const ans = document.getElementById(`faq-ans-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
-            if (ans && icon) {
-                ans.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            }
-        }
+      // Ẩn đồng hồ 15:00 ở màn hình 3, 4, 5 nếu không cần thiết, tự bật ở màn hình 1
+      const widget = document.getElementById('globalCountdownWidget');
+      if (screenNumber === 1 && countdownVisible) {
+        widget.classList.remove('hidden');
+      } else {
+        widget.classList.add('hidden');
+      }
 
-        // ==========================================
-        // 6. MOBILE MENU TOGGLE
-        // ==========================================
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-menu-icon');
-            if (menu) {
-                menu.classList.toggle('hidden');
-                if (menu.classList.contains('hidden')) {
-                    icon.className = "fa-solid fa-bars text-xl";
-                } else {
-                    icon.className = "fa-solid fa-xmark text-xl";
-                }
-            }
-        }
+      // Ẩn banner đang mở nếu chuyển cảnh
+      document.getElementById('pushNotificationBanner').classList.add('hidden');
+    }
 
-        // ==========================================
-        // 7. KIỂM TRA DỮ LIỆU FORM (VALIDATION) & MODAL
-        // ==========================================
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const fullnameInput = document.getElementById('fullname');
-            const phoneInput = document.getElementById('phone');
-            const goalSelect = document.getElementById('goal');
-            const packageSelect = document.getElementById('package');
+    // ==========================================
+    // LOGIC MÀN HÌNH 1: KÍCH HOẠT TIN NHẮN ĐẾN
+    // ==========================================
+    function triggerScamSms() {
+      const bubble = document.getElementById('scamSmsBubble');
+      const placeholder = document.getElementById('scamSmsPlaceholder');
+      placeholder.classList.add('hidden');
 
-            const errName = document.getElementById('err-fullname');
-            const errPhone = document.getElementById('err-phone');
+      bubble.classList.remove('hidden', 'msg-enter');
+      void bubble.offsetWidth;
+      bubble.classList.add('msg-enter');
 
-            const nameVal = fullnameInput.value.trim();
-            const phoneVal = phoneInput.value.trim();
+      // Đặt lại đồng hồ 15:00
+      countdownSeconds = 15 * 60;
+      updateCountdownDisplay();
 
-            let isValid = true;
+      playSmsTingSound();
+      triggerScreenShake(false);
 
-            // Validate Họ tên
-            if (nameVal.length < 2) {
-                errName.classList.remove('hidden');
-                fullnameInput.classList.add('border-rose-500');
-                isValid = false;
-            } else {
-                errName.classList.add('hidden');
-                fullnameInput.classList.remove('border-rose-500');
-            }
+      showTopPushBanner({
+        sender: '[Ngân hàng] • Tin nhắn SMS',
+        body: '[Ngân hàng] Tài khoản của bạn bị khóa do bất thường. Bấm vào link xacthuc-taikhoan.example để xác thực trong 15 phút...',
+        hint: 'Chạm vào link để mở xacthuc-taikhoan.example',
+        iconClass: 'fa-comment-sms',
+        bgClass: 'bg-red-600',
+        onClick: () => goToFakeWebFromSms()
+      });
+    }
 
-            // Validate Số điện thoại Việt Nam (10 số, bắt đầu bằng 0)
-            const phoneRegex = /^0\d{9}$/;
-            if (!phoneRegex.test(phoneVal)) {
-                errPhone.classList.remove('hidden');
-                phoneInput.classList.add('border-rose-500');
-                isValid = false;
-            } else {
-                errPhone.classList.add('hidden');
-                phoneInput.classList.remove('border-rose-500');
-            }
+    function goToFakeWebFromSms() {
+      resetFakeWeb();
+      switchScreen(2);
+    }
 
-            if (!isValid) return;
+    // ==========================================
+    // LOGIC MÀN HÌNH 2: TRANG WEB GIẢ & NHẬP OTP
+    // ==========================================
+    function toggleFakePasswordVisibility() {
+      const passInput = document.getElementById('fakePasswordInput');
+      const eyeIcon = document.getElementById('fakePasswordEyeIcon');
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        eyeIcon.className = 'fa-solid fa-eye-slash';
+      } else {
+        passInput.type = 'password';
+        eyeIcon.className = 'fa-solid fa-eye';
+      }
+    }
 
-            // ====== GỬI THÔNG TIN VỀ GMAIL (qua FormSubmit) ======
-            const NHAN_MAIL_TAI = "bussulol1407@gmail.com";
+    function submitFakeLoginStep1() {
+      document.getElementById('fakeWebStep1').classList.add('hidden');
+      document.getElementById('fakeWebStep2').classList.remove('hidden');
+      const otpInput = document.getElementById('fakeOtpInput');
+      otpInput.value = '';
 
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const btnHTML = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Đang gửi...</span>';
+      // Sau 0.5 giây, trượt thông báo SMS mã OTP 123456 kèm tiếng "Ting!" (không tự động điền)
+      setTimeout(() => {
+        playSmsTingSound();
+        triggerScreenShake(false);
+        showTopPushBanner({
+          sender: '[Ngân hàng] • Mã xác thực OTP',
+          body: '[Ngân hàng]: Mã OTP xác thực giao dịch của quý khách là 123456. Tuyệt đối không cung cấp cho ai.',
+          hint: 'Chạm để đóng thông báo và tự nhập mã OTP',
+          iconClass: 'fa-key',
+          bgClass: 'bg-amber-500',
+          onClick: () => {
+            otpInput.focus();
+          }
+        });
+      }, 500);
+    }
 
-            fetch("https://formsubmit.co/ajax/" + NHAN_MAIL_TAI, {
-                method: "POST",
-                headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                body: JSON.stringify({
-                    _subject: "Đăng ký mới TANDAT ENGLISH: " + nameVal + " - " + phoneVal,
-                    _template: "table",
-                    _captcha: "false",
-                    "Họ và tên": nameVal,
-                    "Số điện thoại": phoneVal,
-                    "Mục tiêu học": goalSelect.value,
-                    "Gói quan tâm": packageSelect.value
-                })
-            })
-            .then(r => r.json())
-            .then(data => {
-                if (String(data.success) !== "true") throw new Error(data.message || "Gửi thất bại");
-                document.getElementById('modal-student-name').textContent = nameVal;
-                document.getElementById('modal-student-phone').textContent = phoneVal;
-                document.getElementById('modal-student-package').textContent = packageSelect.value;
-                document.getElementById('modal-student-goal').textContent = goalSelect.value;
-                document.getElementById('success-modal').classList.remove('hidden');
-                document.getElementById('registration-form').reset();
-            })
-            .catch(() => {
-                alert("Gửi đăng ký chưa thành công. Vui lòng thử lại hoặc liên hệ trực tiếp trung tâm.");
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = btnHTML;
-            });
-        }
+    function appendOtpDigit(digit) {
+      const otpInput = document.getElementById('fakeOtpInput');
+      if (otpInput.value.length < 6) {
+        otpInput.value += digit;
+      }
+    }
 
-        function closeSuccessModal() {
-            document.getElementById('success-modal').classList.add('hidden');
-        }
+    function backspaceOtpDigit() {
+      const otpInput = document.getElementById('fakeOtpInput');
+      otpInput.value = otpInput.value.slice(0, -1);
+    }
 
-        // ==========================================
-        // 9. ĐỒNG HỒ ĐẾM NGƯỢC ƯU ĐÃI (COUNTDOWN TIMER)
-        // ==========================================
-        function startCountdown() {
-            let totalSeconds = (2 * 86400) + (14 * 3600) + (38 * 60) + 45;
-            setInterval(() => {
-                if (totalSeconds <= 0) totalSeconds = 86400;
-                totalSeconds--;
+    function clearOtpDigits() {
+      document.getElementById('fakeOtpInput').value = '';
+    }
 
-                const d = Math.floor(totalSeconds / 86400);
-                const h = Math.floor((totalSeconds % 86400) / 3600);
-                const m = Math.floor((totalSeconds % 3600) / 60);
-                const s = totalSeconds % 60;
+    function completeFakeOtpStep2() {
+      document.getElementById('fakeWebStep2').classList.add('hidden');
+      document.getElementById('fakeWebStep3').classList.remove('hidden');
+    }
 
-                document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
-                document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
-                document.getElementById('cd-minutes').textContent = String(m).padStart(2, '0');
-                document.getElementById('cd-seconds').textContent = String(s).padStart(2, '0');
-            }, 1000);
-        }
+    function resetFakeWeb() {
+      document.getElementById('fakeUsernameInput').value = '';
+      const passInput = document.getElementById('fakePasswordInput');
+      passInput.value = '';
+      passInput.type = 'password';
+      const eyeIcon = document.getElementById('fakePasswordEyeIcon');
+      if (eyeIcon) eyeIcon.className = 'fa-solid fa-eye';
+      document.getElementById('fakeOtpInput').value = '';
+      document.getElementById('fakeWebStep1').classList.remove('hidden');
+      document.getElementById('fakeWebStep2').classList.add('hidden');
+      document.getElementById('fakeWebStep3').classList.add('hidden');
+    }
 
-        // Khởi tạo dữ liệu khi tải trang
-        window.onload = function () {
-            selectStage(1);
-            renderQuiz();
-            startCountdown();
-        };
-    </script>
+    // ==========================================
+    // LOGIC MÀN HÌNH 3: APP NGÂN HÀNG CHÍNH THỨC
+    // ==========================================
+    function toggleHotlineCallModal(show) {
+      const modal = document.getElementById('hotlineCallModal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // ==========================================
+    // LOGIC MÀN HÌNH 4: THÔNG BÁO TRỪ -5.000.000Đ
+    // ==========================================
+    function triggerBalanceDeductionAlert() {
+      const card = document.getElementById('deductionAlertCard');
+      card.classList.remove('msg-enter');
+      void card.offsetWidth;
+      card.classList.add('msg-enter');
+
+      playUrgentAlertSound();
+      triggerScreenShake(true);
+
+      showTopPushBanner({
+        sender: '⚠️ BIẾN ĐỘNG SỐ DƯ - [Ngân hàng]',
+        body: 'Tài khoản 0123xxx999 vừa bị trừ -5.000.000đ. Số dư cuối: 0đ.',
+        hint: 'Nội dung: CHUYEN TIEN QUA LIEN KET XAC THUC',
+        iconClass: 'fa-triangle-exclamation',
+        bgClass: 'bg-red-600'
+      });
+    }
+
+    // ==========================================
+    // LOGIC MÀN HÌNH 5: CHẶN SỐ & BÁO CÁO RÁC
+    // ==========================================
+    function openBlockConfirmModal() {
+      document.getElementById('confirmBlockModal').classList.remove('hidden');
+    }
+
+    function closeBlockConfirmModal() {
+      document.getElementById('confirmBlockModal').classList.add('hidden');
+    }
+
+    function confirmBlockAndReport() {
+      closeBlockConfirmModal();
+      playSmsTingSound();
+      document.getElementById('blockReportActions').classList.add('hidden');
+      document.getElementById('blockReportSuccess').classList.remove('hidden');
+    }
+
+    function resetScreen5() {
+      document.getElementById('blockReportActions').classList.remove('hidden');
+      document.getElementById('blockReportSuccess').classList.add('hidden');
+      closeBlockConfirmModal();
+    }
+
+    // Đặt lại màn hình hiện tại để quay lại nhiều đúp (2-3 lần)
+    function resetCurrentScreen() {
+      document.getElementById('pushNotificationBanner').classList.add('hidden');
+      if (currentScreen === 1) {
+        // Ẩn tin nhắn lừa đảo để diễn viên bấm nổ lại từ đầu
+        document.getElementById('scamSmsBubble').classList.add('hidden');
+        document.getElementById('scamSmsPlaceholder').classList.remove('hidden');
+        countdownSeconds = 15 * 60;
+        updateCountdownDisplay();
+      } else if (currentScreen === 2) {
+        resetFakeWeb();
+      } else if (currentScreen === 3) {
+        toggleHotlineCallModal(false);
+      } else if (currentScreen === 4) {
+        triggerBalanceDeductionAlert();
+      } else if (currentScreen === 5) {
+        resetScreen5();
+      }
+    }
+
+    // Khởi chạy ứng dụng khi tải trang
+    window.onload = function () {
+      switchScreen(1);
+      startCountdownTimer();
+    };
+  </script>
 </body>
 </html>
